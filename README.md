@@ -31,7 +31,7 @@ php artisan serve
 
 ``` bash
 # If you want to access to the repository from Cloud9, use this command:
-# git clone https://<your_personal_accesss_token>@github.com/Tristan-Al/TestSchool.git
+git clone https://<your_personal_accesss_token>@github.com/Tristan-Al/TestSchool.git
 
 # To generate Personal Access Token on GitHub:
 # From your GitHub account, go to Settings → Developer Settings → Personal Access Token →
