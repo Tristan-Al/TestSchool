@@ -29,14 +29,16 @@ Then launch the server:
 php artisan serve
 ```
 
-``` bash
-# If you want to access to the repository from Cloud9, use this command:
-git clone https://<your_personal_accesss_token>@github.com/Tristan-Al/TestSchool.git
+## Getting Started from Cloud9
 
-# To generate Personal Access Token on GitHub:
-# From your GitHub account, go to Settings → Developer Settings → Personal Access Token →
-# Tokens (classic) → Generate New Token (Give your password) → Fillup the form → click Generate
-# token → Copy the generated Token, it will be something like "ghp_sFhFsSHhTzMDreGRLjmks4Tzuzgthdvfsrta".
+From your GitHub account, go to Settings → Developer Settings → Personal Access Token → Tokens (classic) → Generate New Token (Give your password) → Fillup the form → click Generate token → Copy the generated Token, it will be something like: 
+``` bash
+ghp_sFhFsSHhTzMDreGRLjmks4Tzuzgthdvfsrta
+```
+
+If you want to access to the repository from Cloud9, use this command:
+``` bash
+git clone https://<your_personal_accesss_token>@github.com/Tristan-Al/TestSchool.git
 
 ```
 
