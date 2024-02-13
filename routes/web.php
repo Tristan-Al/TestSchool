@@ -28,4 +28,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/profesor/{id}', [EditController::class, 'profesor'])->name('profesor.edit');
+Route::post('/profesor', [EditController::class, 'confirmEditProfesor'])->name('confirmEditProfesor');
+
+Route::get('/formacion/{id}', [EditController::class, 'formacion'])->name('formacion.edit');
+Route::post('/formacion', [EditController::class, 'confirmEditFormacion'])->name('confirmEditFormacion');
+
+Route::get('/modulo/{id}', [EditController::class, 'modulo'])->name('modulo.edit');
+Route::post('/modulo', [EditController::class, 'confirmEditModulo'])->name('confirmEditModulo');
+
 require __DIR__.'/auth.php';
