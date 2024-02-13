@@ -42,6 +42,17 @@ git clone https://<your_personal_accesss_token>@github.com/Tristan-Al/TestSchool
 
 ```
 
+Then, you'll have to follow the next steps:
+
+``` bash
+# We enter in the folder of the repository
+cd TestSchool/
+# Make a chown of all the files and folders
+chown -R www-data:www-data .*
+chown -R www-data:www-data *
+
+```
+
 The Laravel sample project is now up and running! Access it at http://localhost:8000.
 
 ## Developers
