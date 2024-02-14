@@ -6,17 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Formacion extends Model
+class Professor extends Model
 {
     use HasFactory;
     
-    public function modulos(): HasMany
+    public function lectures(): HasMany
     {
-        return $this->hasMany(Modulo::class);
-    }
-    
-    public function grupos(): HasMany
-    {
-        return $this->hasMany(Grupo::class);
+        return $this->hasMany(Lecture::class);
     }
 }
