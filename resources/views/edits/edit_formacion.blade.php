@@ -1,7 +1,7 @@
 @extends('edit_template')
 
 @section('title')
-    Edit Formacion
+    Edit Formation
 @endsection
 
 @section('form')

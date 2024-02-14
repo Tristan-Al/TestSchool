@@ -37,4 +37,10 @@ Route::post('/formacion', [EditController::class, 'confirmEditFormacion'])->name
 Route::get('/modulo/{id}', [EditController::class, 'modulo'])->name('modulo.edit');
 Route::post('/modulo', [EditController::class, 'confirmEditModulo'])->name('confirmEditModulo');
 
+Route::get('/grupo/{id}', [EditController::class, 'grupo'])->name('grupo.edit');
+Route::post('/grupo', [EditController::class, 'confirmEditGrupo'])->name('confirmEditGrupo');
+
+Route::get('/leccion/{id}', [EditController::class, 'leccion'])->name('leccion.edit');
+Route::post('/leccion', [EditController::class, 'confirmEditLeccion'])->name('confirmEditLeccion');
+
 require __DIR__.'/auth.php';
