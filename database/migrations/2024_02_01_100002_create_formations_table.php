@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('formacions', function (Blueprint $table) {
+        Schema::create('formations', function (Blueprint $table) {
             $table->id();
 
-            $table->string('denominacion', 60); // input type text
-            $table->string('siglas', 10); // input type text
+            $table->string('denomination', 60); // input type text
+            $table->string('acronym', 10); // input type text
 
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('formacions');
+        Schema::dropIfExists('formations');
     }
 };
