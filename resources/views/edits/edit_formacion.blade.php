@@ -5,13 +5,13 @@
 @endsection
 
 @section('form')
-    <form action="{{ route('confirmEditFormacion') }}" method="post">
+    <form action="{{ route('confirmEditFormation') }}" method="post">
         @csrf
-        <input type="hidden" name="id" value="{{ $formacion->id }}">
-        <label for="denominacion">Denomination</label>
-        <input type="text" placeholder="Denomination" name="denominacion" id="denominacion" maxlength="60" value="{{ $formacion->denominacion }}"><br>
-        <label for="siglas">Acronym</label>
-        <input type="text" placeholder="Acronym" name="siglas" id="siglas" maxlength="10" value="{{ $formacion->siglas }}"><br>
+        <input type="hidden" name="id" value="{{ $formation->id }}">
+        <label for="denomination">Denomination</label>
+        <input type="text" placeholder="Denomination" name="denomination" id="denomination" maxlength="60" value="{{ $formation->denomination }}"><br>
+        <label for="acronym">Acronym</label>
+        <input type="text" placeholder="Acronym" name="acronym" id="acronym" maxlength="10" value="{{ $formation->acronym }}"><br>
         <input type="submit" value="Edit"><br>
     </form>
 @endsection

@@ -5,31 +5,29 @@
 @endsection
 
 @section('form')
-    <form action="{{ route('confirmEditLeccion') }}" method="post">
+    <form action="{{ route('confirmEditLecture') }}" method="post">
         @csrf
-        <input type="hidden" name="id" value="{{ $leccion->id }}">
-        <label for="cursoEscolar">Seneca User (yyyy-yyyy)</label>
-        <input type=text placeholder="School Year" name="cursoEscolar" id="cursoEscolar" pattern="[0-9]{4}-[0-9]{4}" value="{{ $profesor->usuarioSeneca }}"><br>
-        <label for="grupo_id">Group</label>
-        <select name=grupo_id id="grupo_id">
-            @foreach ($formaciones as $formacion)
-                <option value="{{ $grupo->id }}" <?php if($grupo->id == $leccion->grupo_id){ echo "selected"; } ?>>{{ $grupo->denominacion }}</option>
+        <input type="hidden" name="id" value="{{ $lecture->id }}">
+        <label for="group_id">Group</label>
+        <select name=group_id id="group_id">
+            @foreach ($formations as $formation)
+                <option value="{{ $group->id }}" <?php if($group->id == $lecture->group_id){ echo "selected"; } ?>>{{ $group->denomination }}</option>
             @endforeach
         </select>
-        <label for="modulo_id">Subject</label>
-        <select name=modulo_id id="modulo_id">
-            @foreach ($formaciones as $formacion)
-                <option value="{{ $modulo->id }}" <?php if($modulo->id == $leccion->modulo){ echo "selected"; } ?>>{{ $modulo->denominacion }}</option>
+        <label for="subject_id">Subject</label>
+        <select name=subject_id id="subject_id">
+            @foreach ($subjects as $subject)
+                <option value="{{ $subject->id }}" <?php if($subject->id == $lecture->subject){ echo "selected"; } ?>>{{ $subject->denomination }}</option>
             @endforeach
         </select>
-        <label for="profesor_id">Professor</label>
-        <select name=profesor_id id="profesor_id">
-            @foreach ($profesores as $profesor)
-                <option value="{{ $profesor->id }}" <?php if($profesor->id == $leccion->profesor_id){ echo "selected"; } ?>>{{ $profesor->nombre }} {{ $profesor->apellido1 }} {{ $profesor->apellido2 }}</option>
+        <label for="professor_id">Professor</label>
+        <select name=professor_id id="professor_id">
+            @foreach ($professores as $professor)
+                <option value="{{ $professor->id }}" <?php if($professor->id == $lecture->professor_id){ echo "selected"; } ?>>{{ $professor->name }} {{ $professor->apellido1 }} {{ $professor->apellido2 }}</option>
             @endforeach
         </select>
-        <label for="horas">Hours</label>
-        <input type="number" name="horas" id="horas" min="1" max="30" value="{{ $leccion->horas }}"><br>
+        <label for="hours">Hours</label>
+        <input type="number" name="hours" id="hours" min="1" max="30" value="{{ $lecture->hours }}"><br>
         <input type="submit" value="Edit"><br>
     </form>
 @endsection

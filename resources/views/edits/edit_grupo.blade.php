@@ -5,29 +5,29 @@
 @endsection
 
 @section('form')
-    <form action="{{ route('confirmEditGrupo') }}" method="post">
+    <form action="{{ route('confirmEditGroup') }}" method="post">
         @csrf
-        <input type="hidden" name="id" value="{{ $grupo->id }}">
-        <label for="cursoEscolar">Seneca User (yyyy-yyyy)</label>
-        <input type=text placeholder="School Year" name="cursoEscolar" id="cursoEscolar" pattern="[0-9]{4}-[0-9]{4}" value="{{ $profesor->usuarioSeneca }}"><br>
-        <label for="formacion_id">Formation</label>
-        <select name=formacion_id id="formacion_id">
-            @foreach ($formaciones as $formacion)
-                <option value="{{ $formacion->id }}" <?php if($formacion->id == $grupo->formacion_id){ echo "selected"; } ?>>{{ $formacion->denominacion }}</option>
+        <input type="hidden" name="id" value="{{ $group->id }}">
+        <label for="schoolYear">School Year (yyyy-yyyy)</label>
+        <input type=text placeholder="School Year" name="schoolYear" id="schoolYear" pattern="[0-9]{4}-[0-9]{4}" value="{{ $profesor->usuarioSeneca }}"><br>
+        <label for="formation_id">Formation</label>
+        <select name=formation_id id="formation_id">
+            @foreach ($formations as $formation)
+                <option value="{{ $formation->id }}" <?php if($formation->id == $group->formation_id){ echo "selected"; } ?>>{{ $formation->denomination }}</option>
             @endforeach
         </select>
-        <select name=curso id="curso">
-            <option value="1" <?php if($grupo->curso == "1"){ echo "selected"; } ?>>1st</option>
-            <option value="2" <?php if($grupo->curso == "2"){ echo "selected"; } ?>>2nd</option>
-            <option value="3" <?php if($grupo->curso == "3"){ echo "selected"; } ?>>3rd</option>
-            <option value="4" <?php if($grupo->curso == "4"){ echo "selected"; } ?>>4th</option>
+        <select name=year id="year">
+            <option value="1" <?php if($group->year == "1"){ echo "selected"; } ?>>1st</option>
+            <option value="2" <?php if($group->year == "2"){ echo "selected"; } ?>>2nd</option>
+            <option value="3" <?php if($group->year == "3"){ echo "selected"; } ?>>3rd</option>
+            <option value="4" <?php if($group->year == "4"){ echo "selected"; } ?>>4th</option>
         </select>
-        <label for="denominacion">Denomination</label>
-        <input type="text" placeholder="Denomination" name="denominacion" id="denominacion" maxlength="60" value="{{ $grupo->denominacion }}"><br>
-        <label for="turno">Shift</label>
-        <select name="turno" id="turno">
-            <option value="mañana" <?php if($grupo->turno == "mañana"){ echo "selected"; } ?>>Morning</option>
-            <option value="tarde" <?php if($grupo->turno == "tarde"){ echo "selected"; } ?>>Afternoon</option>
+        <label for="denomination">Denomination</label>
+        <input type="text" placeholder="Denomination" name="denomination" id="denomination" maxlength="60" value="{{ $group->denomination }}"><br>
+        <label for="shift">Shift</label>
+        <select name="shift" id="shift">
+            <option value="morning" <?php if($group->shift == "morning"){ echo "selected"; } ?>>Morning</option>
+            <option value="afternoon" <?php if($group->shift == "afternoon"){ echo "selected"; } ?>>Afternoon</option>
         </select><br>
         <input type="submit" value="Edit"><br>
     </form>

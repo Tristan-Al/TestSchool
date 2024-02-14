@@ -6,156 +6,156 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
-use App\Models\Profesor;
+use App\Models\Professor;
 
 class EditController extends BaseController
 {
-    public function profesor(int $id){
-        $profesor = Profesor::whereId($id)->first();
+    public function professor(int $id){
+        $professor = Professor::whereId($id)->first();
 
-        return view('edits.edit_profesor', ['profesor'=>$profesor]);
+        return view('edits.edit_professor', ['professor'=>$professor]);
     }
 
-    public function formacion(int $id){
-        $formacion = Formacion::whereId($id)->first();
+    public function formation(int $id){
+        $formation = Formation::whereId($id)->first();
 
-        return view('edits.edit_formacion', ['formacion'=>$formacion]);
+        return view('edits.edit_formation', ['formation'=>$formation]);
     }
 
-    public function modulo(int $id){
-        $modulo = Modulo::whereId($id)->first();
-        $formaciones = Formacion::all();
+    public function subject(int $id){
+        $subject = Subject::whereId($id)->first();
+        $formationes = Formation::all();
 
-        return view('edits.edit_modulo', ['modulo'=>$modulo, 'formaciones'=>$formaciones]);
+        return view('edits.edit_subject', ['subject'=>$subject, 'formationes'=>$formationes]);
     }
 
-    public function grupo(int $id){
-        $grupo = Grupo::whereId($id)->first();
-        $formaciones = Formacion::all();
+    public function group(int $id){
+        $group = Group::whereId($id)->first();
+        $formationes = Formation::all();
 
-        return view('edits.edit_grupo', ['grupo'=>$grupo, 'formaciones'=>$formaciones]);
-    }
-    
-
-    public function leccion(int $id){
-        $leccion = Leccion::whereId($id)->first();
-        $modulos = Modulo::all();
-        $grupos = Grupo::all();
-        $profesores = Profesor::all();
-
-        return view('edits.edit_leccion', ['leccion'=>$leccion, 'modulos'=>$modulos, 'grupos'=>$grupos, 'profesores'=>$profesores]);
+        return view('edits.edit_group', ['group'=>$group, 'formationes'=>$formationes]);
     }
     
-    public function confirmEditProfesor(Request $request){
-        $profesor = Profesor::find($request->input('id'));
 
-        if (!empty($request->input('usuarioSeneca'))){
-            $profesor->usuarioSeneca = $request->input('usuarioSeneca');
-        }
-        if (!empty($request->input('nombre'))){
-            $profesor->nombre = $request->input('nombre');
-        }
-        if (!empty($request->input('apellido1'))){
-            $profesor->apellido1 = $request->input('apellido1');
-        }
-        if (!empty($request->input('apellido2'))){
-            $profesor->apellido2 = $request->input('apellido2');
-        }
-        if (!empty($request->input('especialidad'))){
-            $profesor->especialidad = $request->input('especialidad');
-        }
+    public function lecture(int $id){
+        $lecture = Lecture::whereId($id)->first();
+        $subjects = Subject::all();
+        $groups = Group::all();
+        $professores = Professor::all();
 
-        $profesor->save();
+        return view('edits.edit_lecture', ['lecture'=>$lecture, 'subjects'=>$subjects, 'groups'=>$groups, 'professores'=>$professores]);
+    }
+    
+    public function confirmEditProfessor(Request $request){
+        $professor = Professor::find($request->input('id'));
 
-        return redirect()->route('dashboard');
-    } 
-
-    public function confirmEditFormacion(Request $request){
-        $formacion = Formacion::find($request->input('id'));
-
-        if (!empty($request->input('denominacion'))){
-            $formacion->denominacion = $request->input('denominacion');
+        if (!empty($request->input('senecaUser'))){
+            $professor->senecaUser = $request->input('senecaUser');
         }
-        if (!empty($request->input('siglas'))){
-            $formacion->siglas = $request->input('siglas');
+        if (!empty($request->input('name'))){
+            $professor->name = $request->input('name');
+        }
+        if (!empty($request->input('surname1'))){
+            $professor->surname1 = $request->input('surname1');
+        }
+        if (!empty($request->input('surname2'))){
+            $professor->surname2 = $request->input('surname2');
+        }
+        if (!empty($request->input('speciality'))){
+            $professor->speciality = $request->input('speciality');
         }
 
-        $formacion->save();
+        $professor->save();
 
         return redirect()->route('dashboard');
     } 
 
-    public function confirmEditModulo(Request $request){
-        $modulo = Modulo::find($request->input('id'));
+    public function confirmEditFormation(Request $request){
+        $formation = Formation::find($request->input('id'));
 
-        if (!empty($request->input('formacion_id'))){
-            $modulo->formacion_id = $request->input('formacion_id');
+        if (!empty($request->input('denomination'))){
+            $formation->denomination = $request->input('denomination');
         }
-        if (!empty($request->input('denominacion'))){
-            $modulo->denominacion = $request->input('denominacion');
-        }
-        if (!empty($request->input('siglas'))){
-            $modulo->siglas = $request->input('siglas');
-        }
-        if (!empty($request->input('curso'))){
-            $modulo->curso = $request->input('curso');
-        }
-        if (!empty($request->input('horas'))){
-            $modulo->horas = $request->input('horas');
-        }
-        if (!empty($request->input('especialidad'))){
-            $modulo->especialidad = $request->input('especialidad');
+        if (!empty($request->input('acronym'))){
+            $formation->acronym = $request->input('acronym');
         }
 
-        $modulo->save();
+        $formation->save();
 
         return redirect()->route('dashboard');
     } 
 
-    public function confirmEditGrupo(Request $request){
-        $grupo = Grupo::find($request->input('id'));
+    public function confirmEditsubject(Request $request){
+        $subject = subject::find($request->input('id'));
 
-        if (!empty($request->input('cursoEscolar'))){
-            $grupo->cursoEscolar = $request->input('cursoEscolar');
+        if (!empty($request->input('formation_id'))){
+            $subject->formation_id = $request->input('formation_id');
         }
-        if (!empty($request->input('formacion_id'))){
-            $grupo->formacion_id = $request->input('formacion_id');
+        if (!empty($request->input('denomination'))){
+            $subject->denomination = $request->input('denomination');
         }
-        if (!empty($request->input('curso'))){
-            $grupo->curso = $request->input('curso');
+        if (!empty($request->input('acronym'))){
+            $subject->acronym = $request->input('acronym');
         }
-        if (!empty($request->input('denominacion'))){
-            $grupo->denominacion = $request->input('denominacion');
+        if (!empty($request->input('year'))){
+            $subject->year = $request->input('year');
         }
-        if (!empty($request->input('turno'))){
-            $grupo->especialidad = $request->input('turno');
+        if (!empty($request->input('hours'))){
+            $subject->hours = $request->input('hours');
         }
-        if (!empty($request->input('horas'))){
-            $modulo->horas = $request->input('horas');
+        if (!empty($request->input('speciality'))){
+            $subject->speciality = $request->input('speciality');
         }
 
-        $grupo->save();
+        $subject->save();
 
         return redirect()->route('dashboard');
     } 
 
-    public function confirmEditLeccion(Request $request){
-        $leccion = Leccion::find($request->input('id'));
+    public function confirmEditgroup(Request $request){
+        $group = group::find($request->input('id'));
 
-        if (!empty($request->input('grupo_id'))){
-            $leccion->grupo_id = $request->input('grupo_id');
+        if (!empty($request->input('schoolYear'))){
+            $group->schoolYear = $request->input('schoolYear');
         }
-        if (!empty($request->input('modulo_id'))){
-            $leccion->modulo_id = $request->input('modulo_id');
+        if (!empty($request->input('formation_id'))){
+            $group->formation_id = $request->input('formation_id');
         }
-        if (!empty($request->input('profesor_id'))){
-            $leccion->profesor_id = $request->input('profesor_id');
+        if (!empty($request->input('year'))){
+            $group->year = $request->input('year');
         }
-        if (!empty($request->input('horas'))){
-            $leccion->horas = $request->input('horas');
+        if (!empty($request->input('denomination'))){
+            $group->denomination = $request->input('denomination');
+        }
+        if (!empty($request->input('shift'))){
+            $group->speciality = $request->input('shift');
+        }
+        if (!empty($request->input('hours'))){
+            $subject->hours = $request->input('hours');
         }
 
-        $grupo->save();
+        $group->save();
+
+        return redirect()->route('dashboard');
+    } 
+
+    public function confirmEditlecture(Request $request){
+        $lecture = lecture::find($request->input('id'));
+
+        if (!empty($request->input('group_id'))){
+            $lecture->group_id = $request->input('group_id');
+        }
+        if (!empty($request->input('subject_id'))){
+            $lecture->subject_id = $request->input('subject_id');
+        }
+        if (!empty($request->input('professor_id'))){
+            $lecture->professor_id = $request->input('professor_id');
+        }
+        if (!empty($request->input('hours'))){
+            $lecture->hours = $request->input('hours');
+        }
+
+        $group->save();
 
         return redirect()->route('dashboard');
     } 

@@ -28,19 +28,19 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/profesor/{id}', [EditController::class, 'profesor'])->name('profesor.edit');
-Route::post('/profesor', [EditController::class, 'confirmEditProfesor'])->name('confirmEditProfesor');
+Route::get('/professor/{id}', [EditController::class, 'professor'])->name('professor.edit');
+Route::post('/professor', [EditController::class, 'confirmEditProfessor'])->name('confirmEditProfessor');
 
-Route::get('/formacion/{id}', [EditController::class, 'formacion'])->name('formacion.edit');
-Route::post('/formacion', [EditController::class, 'confirmEditFormacion'])->name('confirmEditFormacion');
+Route::get('/formation/{id}', [EditController::class, 'formation'])->name('formation.edit');
+Route::post('/formation', [EditController::class, 'confirmEditFormation'])->name('confirmEditFormation');
 
-Route::get('/modulo/{id}', [EditController::class, 'modulo'])->name('modulo.edit');
-Route::post('/modulo', [EditController::class, 'confirmEditModulo'])->name('confirmEditModulo');
+Route::get('/subject/{id}', [EditController::class, 'subject'])->name('subject.edit');
+Route::post('/subject', [EditController::class, 'confirmEditSubject'])->name('confirmEditSubject');
 
-Route::get('/grupo/{id}', [EditController::class, 'grupo'])->name('grupo.edit');
-Route::post('/grupo', [EditController::class, 'confirmEditGrupo'])->name('confirmEditGrupo');
+Route::get('/group/{id}', [EditController::class, 'group'])->name('group.edit');
+Route::post('/group', [EditController::class, 'confirmEditGroup'])->name('confirmEditGroup');
 
-Route::get('/leccion/{id}', [EditController::class, 'leccion'])->name('leccion.edit');
-Route::post('/leccion', [EditController::class, 'confirmEditLeccion'])->name('confirmEditLeccion');
+Route::get('/lecture/{id}', [EditController::class, 'lecture'])->name('lecture.edit');
+Route::post('/lecture', [EditController::class, 'confirmEditLecture'])->name('confirmEditLecture');
 
 require __DIR__.'/auth.php';
