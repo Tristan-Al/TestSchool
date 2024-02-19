@@ -7,17 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Grupo extends Model
+class Group extends Model
 {
     use HasFactory;
 
-    public function lecciones(): HasMany
+    public function lectures(): HasMany
     {
-        return $this->hasMany(Leccion::class);
+        return $this->hasMany(Lecture::class);
     }
     
-    public function formacion(): BelongsTo
+    public function formation(): BelongsTo
     {
-        return $this->belongsTo(Formacion::class);
+        return $this->belongsTo(Formation::class);
     }
 }
