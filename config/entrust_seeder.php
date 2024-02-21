@@ -14,7 +14,7 @@ return [
     ],
     'user_roles' => [
         'admin' => [
-            ['name' => "Admin", "email" => "admin@gmail.com", "password" => '123456'],
+            ['name' => "Admin", "email" => "admin@testschool.com", "password" => 'admin'],
         ],
     ],
     'permissions_map' => [
