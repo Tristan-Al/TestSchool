@@ -29,6 +29,12 @@ Then launch the server:
 php artisan serve
 ```
 
+To create the admin when we launch the server, use this command:
+
+``` bash
+php artisan db:seed --class=LaravelEntrustSeeder
+```
+
 The Laravel sample project is now up and running! Access it at http://localhost:8000.
 
 ## Developers
