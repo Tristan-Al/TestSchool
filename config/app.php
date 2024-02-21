@@ -159,7 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Shanmuga\LaravelEntrust\LaravelEntrustServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -182,6 +182,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'LaravelEntrust'   => Shanmuga\LaravelEntrust\Facades\LaravelEntrustFacade::class,
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
