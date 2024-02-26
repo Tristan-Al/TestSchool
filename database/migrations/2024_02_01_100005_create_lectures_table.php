@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('lectures', function (Blueprint $table) {
             $table->id();
 
+            // Lo del slug_, laravel lo necesita ya que lo que estás diciéndole a laravel es, <nombre_tabla>_<clave_primaria_tabla_foránea>
             $table->foreignId('group_id')->constrained(); // estoy usando Slug_ porque creo que si no Laravel pierde la cabeza
             $table->foreignId('subject_id')->constrained(); // estoy usando Slug_ porque creo que si no Laravel pierde la cabeza
             $table->foreignId('professor_id')->constrained(); // estoy usando Slug_ porque creo que si no Laravel pierde la cabeza
