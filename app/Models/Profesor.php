@@ -5,30 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Subject extends Model
+class Profesor extends Model
 {
     use HasFactory;
 
-    protected $table = 'subjects';
+    protected $table = 'profesors';
 
     protected $fillable = [
         'id',
-        'formation_id',
-        'denomination',
-        'acronym',
-        'year',
+        'senecaUser',
+        'surname1',
+        'surname2',
         'speciality'
     ];
-
+    
     public function lectures(): HasMany
     {
         return $this->hasMany(Lecture::class);
-    }
-    
-    public function formation(): BelongsTo
-    {
-        return $this->belongsTo(Formation::class);
     }
 }

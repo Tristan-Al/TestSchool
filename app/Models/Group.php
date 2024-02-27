@@ -11,6 +11,17 @@ class Group extends Model
 {
     use HasFactory;
 
+    protected $table = 'groups';
+
+    protected $fillable = [
+        'id',
+        'schoolYear',
+        'formation_id',
+        'year',
+        'denomination',
+        'shift'
+    ];
+
     public function lectures(): HasMany
     {
         return $this->hasMany(Lecture::class);
