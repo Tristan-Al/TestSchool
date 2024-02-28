@@ -10,6 +10,14 @@ class Formation extends Model
 {
     use HasFactory;
     
+    protected $table = 'formations';
+
+    protected $fillable = [
+        'id',
+        'denomination',
+        'acronym'
+    ];
+    
     public function subjects(): HasMany
     {
         return $this->hasMany(Subject::class);
