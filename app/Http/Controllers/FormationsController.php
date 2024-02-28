@@ -31,7 +31,10 @@ class FormationsController extends Controller
 
     public function create()
     {
-        return view('add.add_formations');
+        if(Entrust::hasRole('admin')){
+            return view('add.add_formations');
+        }
+        return view('dashboard'); // If the user is not logged in, it is redirected to the dashboard.
     }
 
     /**
@@ -43,13 +46,16 @@ class FormationsController extends Controller
 
     public function store(Request $request)
     {
-        Formation::create([
-            'id' => $request->id,
-            'denomination' => $request->denomination,
-            'acronym' => $request->acronym
-        ]);
+        if(Entrust::hasRole('admin')){
+            Formation::create([
+                'id' => $request->id,
+                'denomination' => $request->denomination,
+                'acronym' => $request->acronym
+            ]);
 
-        return redirect()->route('formations.index')->with('success', 'Formation agregado correctamente.');
+            return redirect()->route('formations.index')->with('success', 'Formation agregado correctamente.');
+        }
+        return view('dashboard'); // If the user is not logged in, it is redirected to the dashboard.
     }
 
 
