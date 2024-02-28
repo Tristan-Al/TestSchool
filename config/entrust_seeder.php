@@ -15,10 +15,10 @@ return [
     ],
     'user_roles' => [
         'admin' => [
-            ['name' => "Admin", "email" => "admin@testschool.com", "password" => 'admin'],
+            ['name' => "Admin", "email" => "admin@testschool.com", "password" => 'admin'], // Create the user Admin
         ],
     ],
-    'permissions_map' => [
+    'permissions_map' => [ // The permissions and their shortcouts
         'c' => 'create',
         'r' => 'read',
         'u' => 'update',
