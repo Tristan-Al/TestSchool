@@ -44,3 +44,7 @@ Route::get('/lecture/{id}', [EditController::class, 'lecture'])->name('lecture.e
 Route::post('/lecture', [EditController::class, 'confirmEditLecture'])->name('confirmEditLecture');
 
 require __DIR__.'/auth.php';
+
+// DEBUG!!! (delete later)
+Route::get('/table', function(){ return view('table'); });
+Route::get('/custom', function(){ return view('custom'); });
