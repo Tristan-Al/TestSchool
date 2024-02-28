@@ -3,13 +3,14 @@
 return [
     'role_structure' => [
         'admin' => [
-            'users' => 'c,r,u,d',
-            'admin' => 'c,r,u,d',
-            'profile' => 'r,d'
+            '*' => 'c,r,u,d', // All the permissions for all the resources
         ],
-        'subadmin' => [
-            'users' => 'c,r,u',
-            'profile' => 'r,u'
+        'registered_user' => [
+            '*' => 'r', // Read permission for all the resources
+        ],
+        'non_registered_user' => [
+            '*' => '', // No permissions for all the resources
+            'welcome.blade.php' => 'r', // Read permission for welcome.blade.php (Change when we have the blade with the groups structure of the current course)
         ],
     ],
     'user_roles' => [
