@@ -20,7 +20,8 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard');   // All the users should be able to see the dashboard without being logged in.
+                        // Once inside, the non registered users would see the option 'Log in/Register', and the rest the option 'Profile'.
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
