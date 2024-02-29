@@ -20,7 +20,7 @@ class FormationsController extends Controller
     public function index()
     {
         $formations = Formation::all();
-        return view('formations', compact('formations'));
+        return view('dashboard', ['formations' => $formations]);
     }
 
     /**
