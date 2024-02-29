@@ -302,7 +302,7 @@ td:first-child, th:first-child{
     border-left: none;
 }
 table *{
-    padding: 3rem 0;
+    padding: 3rem 1rem;
     text-align: center;
 }
 th{
@@ -386,4 +386,45 @@ th{
 }
 .img img{
     width: 100%;
+}
+
+@media screen and (max-width: 799px) {
+    header{
+        flex-flow: column nowrap;
+        height: auto;
+        padding-bottom: 1rem;
+        gap: 1rem;
+    }
+    nav{
+        width: 100%;
+    }
+    .header_info span{
+        height: auto;
+    }
+    .path{
+        flex-flow: row wrap;
+    }
+    .route{
+        padding: .5rem;
+        padding-left: 2rem;
+    }
+    .titles h1{
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    table{
+        width: 100%;
+    }
+    th, td{
+        padding: .5rem;
+        display: block;
+        border-left: none;
+    }
+    footer .columns{
+        flex-flow: column nowrap;
+    }
+    
+    .formation{
+        flex: 1 0 100%;
+    }
 }
