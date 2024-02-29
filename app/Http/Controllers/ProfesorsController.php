@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Profesor;
+use Illuminate\Support\Facades\Auth;
 
 class ProfesorsController extends Controller
 {
@@ -17,9 +18,13 @@ class ProfesorsController extends Controller
      * @return \Illuminate\View\View
      */
 
-    public function index(){
-        $profesors = Profesor::all();
-        return view('teachers', compact('profesors'));
+     public function index(){
+        $user = Auth::user();
+        $profesores = Profesor::all();
+        $formations = DB::table('formations')->get();
+        $subjects = DB::table('subjects')->get();
+
+        return view('dashboard', ['user' => $user, 'profesores' => $profesores, 'formations' => $formations, 'subjects' => $subjects]);
     }
     
    /**
@@ -93,6 +98,21 @@ class ProfesorsController extends Controller
         $teacher->delete();
         return redirect()->route('teachers.index')->with('success', 'Teacher deleted successfully');
     }
+
+    public function showTable(Request $request)
+    {
+        $user = Auth::user();
+        $profesores = Profesor::all();
+        $formations = DB::table('formations')->get();
+        $subjects = DB::table('subjects')->get();
+
+        $denomination = $request->query('denomination');
+
+
+        return view('table', ['user' => $user, 'profesores' => $profesores, 'formations' => $formations, 'subjects' => $subjects], ['denomination' => $denomination]);
+    }
+
+    
 
 }
 
