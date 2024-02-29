@@ -16,7 +16,7 @@
         <header>
             <nav>
                 <div class="logo"><img src="{{ asset('img/logo_withtext.png') }}"></div>
-                <a href="#">Link</a>
+                <a href="{{ route('dashboard.index') }}">Dashboard</a>
                 <a href="#">Link</a>
                 <a href="#">Link</a>
                 <a href="#">Link</a>
@@ -24,10 +24,16 @@
             <div class="header_info">
                 <span>IES Zaidin Vergeles</span>
                 <div id="search"><img src="{{ asset('assets/search.png') }}"></div>
-                <div id="logout"><img src="{{ asset('assets/logout.png') }}"></div>
+                <div id="logout">
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form><img src="{{ asset('assets/logout.png') }}">
+                    </a>
+                </div>
                 <div id="profile">
                     <div class="profile_picture"></div>
-                    <div class="profile_name">User</div>
+                    <div class="profile_name">{{ $user->name }}</div>
                 </div>
             </div>
         </header>
@@ -37,55 +43,51 @@
                 <div class="next_route">❱</div>
                 <a class="route">My Modules</a>
                 <div class="next_route">❱</div>
-                <a class="route">Module</a>
+                @foreach($formations as $formation)
+                    @if ($formation->id == request('id'))
+                        <a class="route"> {{$formation->denomination }}</a>
+                    @endif
+                @endforeach
             </div>
             <div class="titles">
-                <h1>@yield('title')Title</h1>
-                <h2>@yield('acronym')acronym</h2>
+                <h1>My modules</h1>
+                @foreach($formations as $formation)
+                    @if ($formation->id == request('id'))
+                        <h2> {{$formation->denomination }}</h2>
+                    @endif
+                @endforeach
             </div>
-            <div class="professor"><b>@yield('professor')Professor's</b> module</div>
+            <div class="professor">
+                @foreach($profesores as $profesor)
+                    @if ($profesor->id == $user->id)
+                        <b>{{ $profesor->name }}'s</b> module
+                    @endif
+                @endforeach
+            </div>
             <table>
                 <tr class="titles">
-                    <th>Column</th>
-                    <th>Column</th>
-                    <th>Column</th>
-                    <th>Column</th>
-                    <th>Column</th>
+                    <th>Formation name</th>
+                    <th>Denomination</th>
+                    <th>Initials</th>
+                    <th>Course</th>
+                    <th>Hours</th>
+                    <th>Speciality</th>
                 </tr>
                 <tr>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                </tr>
-                <tr>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                </tr>
-                <tr>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                </tr>
-                <tr>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                </tr>
-                <tr>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
-                    <td>Info</td>
+                    @foreach ($formations as $formation)
+                        @foreach ($subjects as $subject)
+                            @if ($formation->id == request('id') && $subject->formation_id == $formation->id)
+                                <td>{{$formation->denomination }}</td>
+                                <td>{{$subject->denomination }}</td>
+                                <td>{{$subject->acronym }}</td>
+                                <td>{{$subject->year}}</td>
+                                <td>{{$subject->hours}}</td>
+                                <td>{{$subject->speciality}}</td>
+                            @elseif ($formation->id == request('id') && $subject->formation_id != $formation->id)
+                                <td colspan="6">There are no subjects in this formation</td>
+                            @endif
+                        @endforeach
+                    @endforeach
                 </tr>
             </table>
         </main>
