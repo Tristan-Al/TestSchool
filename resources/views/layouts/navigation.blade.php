@@ -5,7 +5,6 @@
     </x-nav-link>
 </nav>
 <div class="header_info">
-    <span>IES Zaidin Vergeles</span>
     <div id="search"><img src="{{ asset('assets/search.png') }}"></div>
     @auth
         <div id="logout">
