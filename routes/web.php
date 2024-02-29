@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfesorsController;
+use App\Http\Controllers\EditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,15 +20,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/*
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+*/
+
+Route::get('/dashboard', [ProfesorsController::class, 'index'])->name('dashboard.index');
+Route::get('/table', [ProfesorsController::class, 'showTable'])->name('table.index');
+
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/teachers', [ProfesorsController::class, 'index'])->name('teachers.index');
 
 Route::get('/professor/{id}', [EditController::class, 'professor'])->name('professor.edit');
 Route::post('/professor', [EditController::class, 'confirmEditProfessor'])->name('confirmEditProfessor');
@@ -46,5 +57,4 @@ Route::post('/lecture', [EditController::class, 'confirmEditLecture'])->name('co
 require __DIR__.'/auth.php';
 
 // DEBUG!!! (delete later)
-Route::get('/table', function(){ return view('table'); });
 Route::get('/custom', function(){ return view('custom'); });
