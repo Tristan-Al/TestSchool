@@ -142,9 +142,10 @@ nav a, #login a, #register a{
 }
 #search{
     height: 1.2rem;
-    padding-right: 1rem;
+    padding: 0 1rem;
+    border-left: 1px solid white;
     border-right: 1px solid white;
-    margin-right: 1rem;
+    margin: 0 1rem;
 }
 #logout{
     height: 1.2rem;
