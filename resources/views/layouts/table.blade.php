@@ -21,7 +21,7 @@
                 @yield('path')
             </div>
             <div class="titles">
-                <h1>@yield('title')</h1>
+                <h1>@yield('module')</h1>
                 <h2>@yield('acronym')</h2>
             </div>
             <div class="professor"><b>@yield('professor')'s</b> module</div>
