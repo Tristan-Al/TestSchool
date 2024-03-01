@@ -110,7 +110,15 @@ nav{
 .logo img{
     height: 100%;
 }
-nav a{
+#login, #register{
+    height: 1.2rem;
+    padding-right: 1rem;
+    margin-right: 1rem;
+}
+#login{
+    border-right: 1px solid white;
+}
+nav a, #login a, #register a{
     color: white;
 
     font-size: 1.2rem;
@@ -124,7 +132,7 @@ nav a{
     align-items: center;
 }
 .header_info span{
-    height: 1.5rem;
+    height: 1.2rem;
     padding-right: 1rem;
     border-right: 1px solid white;
     margin-right: 1rem;
@@ -134,9 +142,10 @@ nav a{
 }
 #search{
     height: 1.2rem;
-    padding-right: 1rem;
+    padding: 0 1rem;
+    border-left: 1px solid white;
     border-right: 1px solid white;
-    margin-right: 1rem;
+    margin: 0 1rem;
 }
 #logout{
     height: 1.2rem;
