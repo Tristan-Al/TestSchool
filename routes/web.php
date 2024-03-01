@@ -31,7 +31,7 @@ Route::resource('lectures', LectureController::class)->except(['show']);
 
 Route::resource('professors', ProfessorController::class)->except(['show']);
 
-Route::resource('subject', SubjectController::class)->except(['show']);
+Route::resource('subjects', SubjectController::class)->except(['show']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -16,14 +16,14 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            <header class="bg-white dark:bg-gray-800 shadow">
-                @include('layouts.navigation')
-            </header>
+            @include('components.navigation')
 
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
+
+            @include('components.footer')
         </div>
     </body>
 </html>
