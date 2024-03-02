@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class FormationRequest extends FormRequest
 {
@@ -11,7 +13,10 @@ class FormationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            return true;
+        }
+        throw new AuthorizationException('No permissions for this action.');
     }
 
     /**
@@ -22,7 +27,8 @@ class FormationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'denomination' => 'required',
+            'acronym' => 'required',
         ];
     }
 }
