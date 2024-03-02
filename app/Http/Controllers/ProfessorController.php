@@ -32,7 +32,7 @@ class ProfessorController extends Controller
     {
         Professor::create($request->validated());
 
-        return redirect()->route('professor.index')->with('success', 'Professor created successfully');
+        return redirect()->route('professors.index')->with('success', 'Professor created successfully');
     }
 
 
@@ -51,7 +51,7 @@ class ProfessorController extends Controller
     {
         $professor->update($request->validated());
 
-        return redirect()->route('professor.index')->with('success', 'Professor updated successfully');
+        return redirect()->route('professors.edit', $professor)->with('success', 'Professor updated successfully');
     }
 
     /**
@@ -61,6 +61,6 @@ class ProfessorController extends Controller
     {
         $professor->delete();
 
-        return redirect()->route('professor.index')->with('success', 'Professor deleted successfully');
+        return redirect()->route('professors.index')->with('success', 'Professor deleted successfully');
     }
 }

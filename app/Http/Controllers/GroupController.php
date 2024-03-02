@@ -32,7 +32,7 @@ class GroupController extends Controller
     {
         Group::create($request->validated());
 
-        return redirect()->route('group.index')->with('success', 'Group created successfully');
+        return redirect()->route('groups.index')->with('success', 'Group created successfully');
     }
 
 
@@ -51,7 +51,7 @@ class GroupController extends Controller
     {
         $group->update($request->validated());
 
-        return redirect()->route('group.index')->with('success', 'Group updated successfully');
+        return redirect()->route('groups.edit', $group)->with('success', 'Group updated successfully');
     }
 
     /**
@@ -61,6 +61,6 @@ class GroupController extends Controller
     {
         $group->delete();
 
-        return redirect()->route('group.index')->with('success', 'Group deleted successfully');
+        return redirect()->route('groups.index')->with('success', 'Group deleted successfully');
     }
 }

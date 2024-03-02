@@ -32,7 +32,7 @@ class LectureController extends Controller
     {
         Lecture::create($request->validated());
 
-        return redirect()->route('lecture.index')->with('success', 'Lecture created successfully');
+        return redirect()->route('lectures.index')->with('success', 'Lecture created successfully');
     }
 
 
@@ -51,7 +51,7 @@ class LectureController extends Controller
     {
         $lecture->update($request->validated());
 
-        return redirect()->route('lecture.index')->with('success', 'Lecture updated successfully');
+        return redirect()->route('lectures.edit', $lecture)->with('success', 'Lecture updated successfully');
     }
 
     /**
@@ -61,6 +61,6 @@ class LectureController extends Controller
     {
         $lecture->delete();
 
-        return redirect()->route('lecture.index')->with('success', 'Lecture deleted successfully');
+        return redirect()->route('lectures.index')->with('success', 'Lecture deleted successfully');
     }
 }
