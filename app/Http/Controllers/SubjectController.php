@@ -32,7 +32,7 @@ class SubjectController extends Controller
     {
         Subject::create($request->validated());
 
-        return redirect()->route('subject.index')->with('success', 'Subject created successfully');
+        return redirect()->route('subjects.index')->with('success', 'Subject created successfully');
     }
 
 
@@ -52,7 +52,7 @@ class SubjectController extends Controller
     {
         $subject->update($request->validated());
 
-        return redirect()->route('subject.index')->with('success', 'Subject updated successfully');
+        return redirect()->route('subjects.edit', $subject)->with('success', 'Subject updated successfully');
     }
 
     /**
@@ -62,6 +62,6 @@ class SubjectController extends Controller
     {
         $subject->delete();
 
-        return redirect()->route('subject.index')->with('success', 'Subject deleted successfully');
+        return redirect()->route('subjects.index')->with('success', 'Subject deleted successfully');
     }
 }

@@ -32,7 +32,7 @@ class FormationController extends Controller
     {
         Formation::create($request->validated());
 
-        return redirect()->route('formation.index')->with('success', 'Formation created successfully');
+        return redirect()->route('formations.index')->with('success', 'Formation created successfully');
     }
 
     /**
@@ -50,7 +50,7 @@ class FormationController extends Controller
     {
         $formation->update($request->validated());
 
-        return redirect()->route('formation.index')->with('success', 'Formation updated successfully');
+        return redirect()->route('formations.edit', $formation)->with('success', 'Formation updated successfully');
     }
 
     /**
@@ -60,6 +60,6 @@ class FormationController extends Controller
     {
         $formation->delete();
 
-        return redirect()->route('formation.index')->with('success', 'Formation deleted successfully');
+        return redirect()->route('formations.index')->with('success', 'Formation deleted successfully');
     }
 }

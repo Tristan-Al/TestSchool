@@ -44,7 +44,7 @@
             <option value="secondary" <?php if ($subject->speciality == 'secondary') {
                 echo 'selected';
             } ?>>Secondary Education</option>
-            <option value="vocational training" <?php if ($subject->speciality == 'vocational training') {
+            <option value="vocational training" <?php if ($subject->speciality == 'vocational_training') {
                 echo 'selected';
             } ?>>vocational training</option>
         </select><br>

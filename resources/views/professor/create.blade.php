@@ -32,8 +32,8 @@
                 <label for="apellido2">Segundo Apellido:</label>
                 <input type="text" id="apellido2" name="apellido2" required>
 
-                <label for="senecaUser">Usuario Seneca:</label>
-                <input type="text" id="senecaUser" name="senecaUser" required>
+                <label for="seneca_user">Usuario Seneca:</label>
+                <input type="text" id="seneca_user" name="seneca_user" required>
 
                 <label for="especialidad">Especialidad:</label>
                 <input type="text" id="especialidad" name="especialidad" required>

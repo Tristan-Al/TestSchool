@@ -8,9 +8,9 @@
     <form action="{{ route('confirmEditProfessor') }}" method="post">
         @csrf
         <input type="hidden" name="id" value="{{ $professor->id }}">
-        <label for="senecaUser">Seneca User (7 letters + 3 numbers)</label>
-        <input type=text placeholder="Seneca username" name="senecaUser" id="senecaUser" pattern="[a-z]{7}[0-9]{3}"
-            value="{{ $professor->senecaUser }}"><br>
+        <label for="seneca_user">Seneca User (7 letters + 3 numbers)</label>
+        <input type=text placeholder="Seneca username" name="seneca_user" id="seneca_user" pattern="[a-z]{7}[0-9]{3}"
+            value="{{ $professor->seneca_user }}"><br>
         <label for="name">Name</label>
         <input type="text" placeholder="Name" name="name" id="name" maxlength="60"
             value="{{ $professor->name }}"><br>
@@ -25,7 +25,7 @@
             <option value="secondary" <?php if ($professor->speciality == 'secondary') {
                 echo 'selected';
             } ?>>Secondary Education</option>
-            <option value="vocational training" <?php if ($professor->speciality == 'vocational training') {
+            <option value="vocational_training" <?php if ($professor->speciality == 'vocational_training') {
                 echo 'selected';
             } ?>>Profesional Formation</option>
         </select><br>
