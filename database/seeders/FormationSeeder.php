@@ -10,6 +10,8 @@ class FormationSeeder extends Seeder
 {
     use WithoutModelEvents;
 
+    protected $order = 2;
+
     /**
      * Run the database seeds.
      */
