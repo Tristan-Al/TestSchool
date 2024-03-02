@@ -12,7 +12,7 @@ class Professor extends Model
 
     protected $fillable = [
         'id',
-        'senecaUser',
+        'seneca_user',
         'surname1',
         'surname2',
         'speciality'

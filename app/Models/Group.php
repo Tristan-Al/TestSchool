@@ -15,7 +15,7 @@ class Group extends Model
 
     protected $fillable = [
         'id',
-        'schoolYear',
+        'school_year',
         'formation_id',
         'year',
         'denomination',
@@ -26,7 +26,7 @@ class Group extends Model
     {
         return $this->hasMany(Lecture::class);
     }
-    
+
     public function formation(): BelongsTo
     {
         return $this->belongsTo(Formation::class);

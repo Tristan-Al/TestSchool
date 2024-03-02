@@ -1,19 +1,38 @@
-@extends('edit_template')
+@extends('layouts.edit_template')
 
-@section('title')
-    Edit Formation
-@endsection
+@section('title', 'Edit formation')
 
 @section('form')
-    <form action="{{ route('confirmEditFormation') }}" method="post">
-        @csrf
-        <input type="hidden" name="id" value="{{ $formation->id }}">
-        <label for="denomination">Denomination</label>
-        <input type="text" placeholder="Denomination" name="denomination" id="denomination" maxlength="60"
-            value="{{ $formation->denomination }}"><br>
-        <label for="acronym">Acronym</label>
-        <input type="text" placeholder="Acronym" name="acronym" id="acronym" maxlength="10"
-            value="{{ $formation->acronym }}"><br>
-        <input type="submit" value="Edit"><br>
-    </form>
+    @if (session('success'))
+        <div class="bg-green-200 text-green-800 p-4 mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
+    <div class="max-w-2xl mx-auto px-5">
+        <form action="{{ route('formations.update', ['formation' => $formation]) }}" method="post">
+            @method('PUT')
+            @csrf
+
+            <div class="mb-4">
+                <label for="id" class="block text-sm font-medium text-gray-600">ID: {{ $formation->id }}</label>
+            </div>
+
+            <div class="mb-4">
+                <label for="denomination" class="block text-sm font-medium text-gray-600">Denomination</label>
+                <input type="text" name="denomination" id="denomination" value="{{ $formation->denomination }}"
+                    class="mt-1 p-2 w-full border rounded-md">
+            </div>
+
+            <div class="mb-4">
+                <label for="acronym" class="block text-sm font-medium text-gray-600">Acronym</label>
+                <input type="text" name="acronym" id="acronym" value="{{ $formation->acronym }}"
+                    class="mt-1 p-2 w-full border rounded-md">
+            </div>
+
+            <div class="mb-4">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md"
+                    onclick="return confirm('Are you sure you want to update this formation?')">Save</button>
+            </div>
+        </form>
+    </div>
 @endsection

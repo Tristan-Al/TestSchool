@@ -8,8 +8,8 @@
     <form action="{{ route('confirmEditGroup') }}" method="post">
         @csrf
         <input type="hidden" name="id" value="{{ $group->id }}">
-        <label for="schoolYear">School Year (yyyy-yyyy)</label>
-        <input type=text placeholder="School Year" name="schoolYear" id="schoolYear" pattern="[0-9]{4}-[0-9]{4}"
+        <label for="school_year">School Year (yyyy-yyyy)</label>
+        <input type=text placeholder="School Year" name="school_year" id="school_year" pattern="[0-9]{4}-[0-9]{4}"
             value="{{ $profesor->usuarioSeneca }}"><br>
         <label for="formation_id">Formation</label>
         <select name=formation_id id="formation_id">
