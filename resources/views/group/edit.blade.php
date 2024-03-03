@@ -75,7 +75,7 @@
 
             <div class="mb-4">
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md"
-                    onclick="return confirm('Are you sure you want to update this formation?')">Save</button>
+                    onclick="return confirm('Are you sure you want to update this group?')">Save</button>
             </div>
         </form>
     </div>
