@@ -43,7 +43,7 @@ class LectureRequest extends FormRequest
                     $fail('A professor can not work more than '.$max_hours.' hours per week.');
                 }
                 elseif($total_hours < 0){
-                    $fail('A professor\'s hours  can not be negative.');
+                    $fail('A professor\'s hours can not be negative.');
                 }
             }],
         ];
