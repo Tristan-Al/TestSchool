@@ -13,14 +13,9 @@ class GroupController extends Controller
      */
     public function index()
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
-            $groups = Group::paginate(10);
+        $groups = Group::paginate(10);
 
-            return view('group.index', compact('groups'));
-        }
-        else{
-            return redirect()->route('login');
-        }
+        return view('group.index', compact('groups'));
     }
 
     /**

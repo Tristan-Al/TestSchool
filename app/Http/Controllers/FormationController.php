@@ -13,7 +13,7 @@ class FormationController extends Controller
      */
     public function index()
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){    
+        if(Auth::check() && (Auth::user()->hasRole('registered_user') || Auth::user()->hasRole('admin'))){    
             $formations = Formation::paginate(10);
 
             return view('formation.index', compact('formations'));

@@ -13,7 +13,7 @@ class LectureController extends Controller
      */
     public function index()
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if(Auth::check() && (Auth::user()->hasRole('registered_user') || Auth::user()->hasRole('admin'))){
             $lectures = Lecture::paginate(10);
 
             return view('lecture.index', compact('lectures'));
