@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LectureRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Lecture;
 
 class LectureController extends Controller
@@ -12,9 +13,14 @@ class LectureController extends Controller
      */
     public function index()
     {
-        $lectures = Lecture::paginate(10);
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            $lectures = Lecture::paginate(10);
 
-        return view('lecture.index', compact('lectures'));
+            return view('lecture.index', compact('lectures'));
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -22,7 +28,12 @@ class LectureController extends Controller
      */
     public function create()
     {
-        return view('lecture.create');
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            return view('lecture.create');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -30,9 +41,14 @@ class LectureController extends Controller
      */
     public function store(LectureRequest $request)
     {
-        Lecture::create($request->validated());
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            Lecture::create($request->validated());
 
-        return redirect()->route('lectures.index')->with('success', 'Lecture created successfully');
+            return redirect()->route('lectures.index')->with('success', 'Lecture created successfully');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
 
@@ -41,7 +57,12 @@ class LectureController extends Controller
      */
     public function edit(Lecture $lecture)
     {
-        return view('lecture.edit', compact('lecture'));
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            return view('lecture.edit', compact('lecture'));
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -49,9 +70,14 @@ class LectureController extends Controller
      */
     public function update(LectureRequest $request, Lecture $lecture)
     {
-        $lecture->update($request->validated());
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            $lecture->update($request->validated());
 
-        return redirect()->route('lectures.edit', $lecture)->with('success', 'Lecture updated successfully');
+            return redirect()->route('lectures.edit', $lecture)->with('success', 'Lecture updated successfully');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -59,8 +85,13 @@ class LectureController extends Controller
      */
     public function destroy(Lecture $lecture)
     {
-        $lecture->delete();
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            $lecture->delete();
 
-        return redirect()->route('lectures.index')->with('success', 'Lecture deleted successfully');
+            return redirect()->route('lectures.index')->with('success', 'Lecture deleted successfully');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 }

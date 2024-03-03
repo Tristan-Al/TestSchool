@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FormationRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Formation;
 
 class FormationController extends Controller
@@ -12,9 +13,14 @@ class FormationController extends Controller
      */
     public function index()
     {
-        $formations = Formation::paginate(10);
+        if(Auth::check() && Auth::user()->hasRole('admin')){    
+            $formations = Formation::paginate(10);
 
-        return view('formation.index', compact('formations'));
+            return view('formation.index', compact('formations'));
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -22,7 +28,12 @@ class FormationController extends Controller
      */
     public function create()
     {
-        return view('formation.create');
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            return view('formation.create');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -30,9 +41,14 @@ class FormationController extends Controller
      */
     public function store(FormationRequest $request)
     {
-        Formation::create($request->validated());
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            Formation::create($request->validated());
 
-        return redirect()->route('formations.index')->with('success', 'Formation created successfully');
+            return redirect()->route('formations.index')->with('success', 'Formation created successfully');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -40,7 +56,12 @@ class FormationController extends Controller
      */
     public function edit(Formation $formation)
     {
-        return view('formation.edit', compact('formation'));
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            return view('formation.edit', compact('formation'));
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -48,9 +69,14 @@ class FormationController extends Controller
      */
     public function update(FormationRequest $request, Formation $formation)
     {
-        $formation->update($request->validated());
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            $formation->update($request->validated());
 
-        return redirect()->route('formations.edit', $formation)->with('success', 'Formation updated successfully');
+            return redirect()->route('formations.edit', $formation)->with('success', 'Formation updated successfully');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -58,8 +84,13 @@ class FormationController extends Controller
      */
     public function destroy(Formation $formation)
     {
-        $formation->delete();
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            $formation->delete();
 
-        return redirect()->route('formations.index')->with('success', 'Formation deleted successfully');
+            return redirect()->route('formations.index')->with('success', 'Formation deleted successfully');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 }
