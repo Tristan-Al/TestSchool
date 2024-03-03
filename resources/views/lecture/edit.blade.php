@@ -76,8 +76,8 @@
             </div>
 
             <div class="mb-4">
-                <label for="denomination" class="block text-sm font-medium text-gray-600">Hours</label>
-                <input type="number" step="1" name="denomination" id="denomination" value="{{ $lecture->hours }}"
+                <label for="hours" class="block text-sm font-medium text-gray-600">Hours</label>
+                <input type="number" step="1" name="hours" id="hours" value="{{ $lecture->hours }}"
                     class="mt-1 p-2 w-full border rounded-md">
             </div>
 
