@@ -1,93 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.edit_template')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+@section('title', 'Create professor')
 
-<body>
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-
-    <body>
-        <div class="container">
-            <h2>Add New Professor</h2>
-
-            <form action="{{ route('professor.store') }}" method="POST">
-                @csrf
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-
-                <label for="apellido1">Primer Apellido:</label>
-                <input type="text" id="apellido1" name="apellido1" required>
-
-                <label for="apellido2">Segundo Apellido:</label>
-                <input type="text" id="apellido2" name="apellido2" required>
-
-                <label for="seneca_user">Usuario Seneca:</label>
-                <input type="text" id="seneca_user" name="seneca_user" required>
-
-                <label for="especialidad">Especialidad:</label>
-                <input type="text" id="especialidad" name="especialidad" required>
-
-                <input type="submit" value="Guardar">
-            </form>
+@section('form')
+    @if ($errors->any())
+        <div class="alert alert-danger text-red-500 pb-4">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
-    </body>
+    @endif
+    @if (session('success'))
+        <div class="bg-green-200 text-green-800 p-4 mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
+    <div class="max-w-2xl mx-auto px-5">
+        <form action="{{ route('professors.store') }}" method="post">
+            @method('PUT')
+            @csrf
 
-    </html>
+            <div class="mb-4">
+                <label for="seneca_user" class="block text-sm font-medium text-gray-600">Seneca user</label>
+                <input type="text" name="seneca_user" id="seneca_user" placeholder="E.g.: jgarper176"
+                    class="mt-1 p-2 w-full border rounded-md">
+            </div>
 
-    <style>
-        /* Container styles */
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-600">Name</label>
+                <input type="text" name="name" id="name" class="mt-1 p-2 w-full border rounded-md">
+            </div>
 
-        /* Heading style */
-        h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+            <div class="mb-4">
+                <label for="surname1" class="block text-sm font-medium text-gray-600">Surname 1</label>
+                <input type="text" name="surname1" id="surname1" class="mt-1 p-2 w-full border rounded-md">
+            </div>
 
-        /* Label and input styles */
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+            <div class="mb-4">
+                <label for="surname2" class="block text-sm font-medium text-gray-600">Surame 2</label>
+                <input type="text" name="surname2" id="surname2" class="mt-1 p-2 w-full border rounded-md">
+            </div>
 
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+            <div class="mb-4">
+                <label for="speciality" class="block text-sm font-medium text-gray-600">Speciality</label>
+                <select name="speciality" id="speciality" class="mt-1 p-2 w-full border rounded-md">
+                    @php
+                        $options = ['secondary', 'vocational_training'];
+                    @endphp
+                    <option selected value="">...</option>
+                    @foreach ($options as $option)
+                        <option value="{{ $option }}">
+                            {{ ucfirst($option) }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
-        /* Submit button style */
-        input[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</body>
-
-</html>
+            <div class="mb-4">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md"
+                    onclick="return confirm('Are you sure you want to update this formation?')">Save</button>
+            </div>
+        </form>
+    </div>
+@endsection
