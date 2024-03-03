@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class GroupRequest extends FormRequest
 {
@@ -11,7 +13,10 @@ class GroupRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            return true;
+        }
+        throw new AuthorizationException('No permissions for this action.');
     }
 
     /**
