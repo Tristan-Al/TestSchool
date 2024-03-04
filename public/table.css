@@ -10,6 +10,7 @@
     --blue-4: #9ec8b9;
     --blue-5: #bce2e6;
     --blue-6: #d0e7d2;
+    --blue-7: #5becb4;
     --white-1: #f6f4ee;
     --white-2: #f2f2f2;
     --gradient-1: #092635;
@@ -203,17 +204,18 @@ footer{
 footer .logo{
     margin-bottom: 3rem;
 }
-footer .columns{
+.columns{
     width: 100%;
-    
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: flex-start;
+}
+footer .columns{
     gap: 3rem;
 }
 .column{
-    flex: 0 1 20%;
+    flex: 0 1 0;
 
     display: flex;
     flex-flow: column nowrap;
@@ -404,6 +406,60 @@ th{
 }
 #collapse{
     display: none;
+}
+
+#hero{
+    width: 100%;
+    height: calc(100vh - 100px);
+    overflow: hidden;
+    background: linear-gradient(45deg, var(--blue-1), var(--blue-2));
+
+    padding: 0 5%;
+}
+
+#hero .column:first-child{
+    min-width: 50%;
+    height: 100%;
+    justify-content: space-between;
+}
+#hero .subtitle{
+    text-transform: uppercase;
+    color: grey;
+    font-size: 1.5rem;
+}
+#hero h1{
+    margin: 2rem 0;
+    font-family: 'Mogilte';
+    font-size: 5rem;
+    color: var(--white-2);
+}
+#hero h1 .title{
+    color: var(--blue-7);
+    text-shadow: 0 0 1rem var(--blue-4);
+}
+.hero_img{
+    width: 50%;
+}
+.hero_img img{
+    width: 100%;
+}
+.cta{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 80px;
+    width: 200px;
+    background-color: var(--blue-4);
+    border-radius: 40px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+.imagenes{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-content: end;
 }
 
 @media screen and (max-width: 1000px) {

@@ -48,3 +48,4 @@ require __DIR__.'/auth.php';
 // DEBUG!!! (delete later)
 Route::get('/table', function(){ return view('table'); });
 Route::get('/custom', function(){ return view('custom'); });
+Route::get('/alt', function(){ return view('alt_dashboard'); });
