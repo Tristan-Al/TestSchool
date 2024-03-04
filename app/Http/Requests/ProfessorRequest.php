@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProfessorRequest extends FormRequest
 {
@@ -11,7 +13,10 @@ class ProfessorRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            return true;
+        }
+        throw new AuthorizationException('No permissions for this action.');
     }
 
     /**
@@ -22,7 +27,11 @@ class ProfessorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'seneca_user' => 'required|regex:/^[a-z]{7}\d{3}$/',
+            'name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'surname1' => 'required|regex:/^[\pL\s\-]+$/u',
+            'surname2' => 'required|regex:/^[\pL\s\-]+$/u',
+            'speciality' => ['required', 'in:secondary,vocational_training'],
         ];
     }
 }

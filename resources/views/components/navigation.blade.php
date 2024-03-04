@@ -11,7 +11,11 @@
                 {{ __('Home') }}
             </x-nav-link>
 
-            @if(Auth::check() && Auth::user()->hasRole('admin'))
+            <x-nav-link :href="route('groups.index')" :active="request()->routeIs('groups.index')">
+                {{ __('Groups') }}
+            </x-nav-link>
+
+            @if (Auth::check() && (Auth::user()->hasRole('registered_user') || Auth::user()->hasRole('admin')))
                 <x-nav-link :href="route('formations.index')" :active="request()->routeIs('formations.index')">
                     {{ __('Formations') }}
                 </x-nav-link>
@@ -23,13 +27,7 @@
                 <x-nav-link :href="route('subjects.index')" :active="request()->routeIs('subjects.index')">
                     {{ __('Subjects') }}
                 </x-nav-link>
-            @endif
 
-            <x-nav-link :href="route('groups.index')" :active="request()->routeIs('groups.index')">
-                {{ __('Groups') }}
-            </x-nav-link>
-
-            @if(Auth::check() && Auth::user()->hasRole('registered_user'))
                 <x-nav-link :href="route('lectures.index')" :active="request()->routeIs('lectures.index')">
                     {{ __('Lectures') }}
                 </x-nav-link>
@@ -43,7 +41,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                                onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 <img src="{{ asset('assets/logout.png') }}">
                             </x-dropdown-link>
@@ -77,7 +75,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <x-dropdown-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                        onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         <img src="{{ asset('assets/logout.png') }}">
                     </x-dropdown-link>

@@ -27,8 +27,8 @@ class FormationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'denomination' => 'required',
-            'acronym' => 'required',
+            'denomination' => 'required|max:60|regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/',
+            'acronym' => 'required|max:10|regex:/^[A-Z]+$/',
         ];
     }
 }

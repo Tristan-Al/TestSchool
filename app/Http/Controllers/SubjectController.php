@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SubjectRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Subject;
 
 class SubjectController extends Controller
@@ -12,9 +13,14 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subjects = Subject::paginate(10);
+        if(Auth::check() && (Auth::user()->hasRole('registered_user') || Auth::user()->hasRole('admin'))){
+            $subjects = Subject::paginate(10);
 
-        return view('subject.index', compact('subjects'));
+            return view('subject.index', compact('subjects'));
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -22,7 +28,12 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        return view('subject.create');
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            return view('subject.create');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -30,9 +41,14 @@ class SubjectController extends Controller
      */
     public function store(SubjectRequest $request)
     {
-        Subject::create($request->validated());
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            Subject::create($request->validated());
 
-        return redirect()->route('subjects.index')->with('success', 'Subject created successfully');
+            return redirect()->route('subjects.index')->with('success', 'Subject created successfully');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
 
@@ -41,7 +57,12 @@ class SubjectController extends Controller
      */
     public function edit(Subject $subject)
     {
-        return view('subject.edit', compact('subject'));
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            return view('subject.edit', compact('subject'));
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -50,9 +71,14 @@ class SubjectController extends Controller
 
     public function update(SubjectRequest $request, Subject $subject)
     {
-        $subject->update($request->validated());
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            $subject->update($request->validated());
 
-        return redirect()->route('subjects.edit', $subject)->with('success', 'Subject updated successfully');
+            return redirect()->route('subjects.edit', $subject)->with('success', 'Subject updated successfully');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -60,8 +86,13 @@ class SubjectController extends Controller
      */
     public function destroy(Subject $subject)
     {
-        $subject->delete();
+        if(Auth::check() && Auth::user()->hasRole('admin')){
+            $subject->delete();
 
-        return redirect()->route('subjects.index')->with('success', 'Subject deleted successfully');
+            return redirect()->route('subjects.index')->with('success', 'Subject deleted successfully');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 }
