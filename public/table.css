@@ -802,6 +802,15 @@ th {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.item-section2-box img {
+    margin: 20px;
+}
+
+.boldertext-section2 {
+    margin-bottom: 20px;
 }
 
 .white-space-section2:first-child {
@@ -1044,6 +1053,8 @@ iframe {
     }
 }
 
+
+
 @media screen and (max-width: 1200px) {
     header {
         flex-flow: column nowrap;
@@ -1183,8 +1194,6 @@ iframe {
     footer {
         display: flex;
         flex-flow: column nowrap;
-        justify-content: center;
-        align-items: center;
     }
 
     .column:first-child {
@@ -1194,7 +1203,17 @@ iframe {
     .columns {
         display: flex !important;
         flex-flow: column nowrap !important;
-        justify-content: center !important;
-        align-items: center !important;
+    }
+
+    .circle-section3 h2 {
+        margin-bottom: 0;
+    }
+
+    .circle-section3 p {
+        margin-left: 15%;
+    }
+
+    .title-section2 h1 {
+        margin-bottom: 20px;
     }
 }
