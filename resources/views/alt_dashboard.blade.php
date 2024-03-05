@@ -17,7 +17,7 @@
         <header>
             <nav>
                 <div class="logo"><img src="{{ asset('img/logo_withtext.png') }}"></div>
-                <a href="#">Link</a>
+                {{ __('Dashboard') }}
                 <a href="#">Link</a>
                 <a href="#">Link</a>
                 <a href="#">Link</a>
