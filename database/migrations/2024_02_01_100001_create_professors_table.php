@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('professors', function (Blueprint $table) {
             $table->id();
 
-            $table->string('senecaUser', 10)->unique(); // input type text VALIDAR
-            $table->string('name', 60); // input type text
-            $table->string('surname1', 60); // input type text
-            $table->string('surname2', 60); // input type text
-            $table->string('speciality', 60); // hacer con un select con 2 opciones
+            $table->string('seneca_user', 10)->unique();
+            $table->string('name', 60);
+            $table->string('surname1', 60);
+            $table->string('surname2', 60);
+            $table->enum('speciality', ['secondary', 'vocational_training']);
 
             $table->timestamps();
         });

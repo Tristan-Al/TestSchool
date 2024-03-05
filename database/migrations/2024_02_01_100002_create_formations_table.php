@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('formations', function (Blueprint $table) {
             $table->id();
 
-            $table->string('denomination', 60); // input type text
-            $table->string('acronym', 10); // input type text
+            $table->string('denomination', 60);
+            $table->string('acronym', 10);
 
             $table->timestamps();
         });

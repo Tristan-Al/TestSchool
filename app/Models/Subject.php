@@ -11,6 +11,17 @@ class Subject extends Model
 {
     use HasFactory;
 
+    protected $table = 'subjects';
+
+    protected $fillable = [
+        'id',
+        'formation_id',
+        'denomination',
+        'acronym',
+        'year',
+        'speciality'
+    ];
+
     public function lectures(): HasMany
     {
         return $this->hasMany(Lecture::class);
