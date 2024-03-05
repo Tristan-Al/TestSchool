@@ -42,10 +42,8 @@
             </div>
             <div class="part-section1">
                 <h1>Who are we?</h1>
-                <p class="firstp">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae, nam nemo ratione
-                    inventore minus eius earum laboriosam similique nihil asperiores?.</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias nam impedit alias animi eaque,
-                    ipsa tenetur qui doloribus in modi blanditiis, totam natus.</p>
+                <p class="firstp">At IES Zaidin Vergeles, we are dedicated to nurturing the potential of every student and providing them with a supportive and enriching learning environment. </p>
+                <p> With a focus on academic achievement, personal growth, and community involvement, we strive to empower our students to excel both inside and outside the classroom.</p>
             </div>
 
             <div class="part-section1">
@@ -81,12 +79,12 @@
                             <p class="boldertext-section2">Our teachers</p>
                         </div>
                         <div class="item-section2-box">
-                            <p>Our great variety of Extracurricular Activities</p>
+                            <p>Our Great Variety of Extracurricular Activities</p>
                         </div>
                     </div>
                     <div class="row-section2 row-2-row">
                         <div class="item-section2-box">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, quasi.</p>
+                        <p>Our Carrer Focused Learning Methods</p>
                         </div>
                         <div class="item-section2-box white-space-section2">
                             <img src="{{ asset('img/software.png') }}" alt="books icon">
@@ -131,7 +129,7 @@
             </div>
             <div class="columns">
                 <div class="column">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>At IES Zaidin Vergeles, we are dedicated to nurturing the potential of every student and providing them with a supportive and enriching learning environment. </p>
                     <a href="#">Back to Homepage</a>
                 </div>
                 <div class="column">
