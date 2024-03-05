@@ -12,8 +12,9 @@
 
         #principal-collapsable {
             display: none;
-            background-color: #092635;
-            color: white;
+            <<<<<<< HEAD background-color: #092635;
+            =======background-color: #333;
+            >>>>>>>main color: white;
             padding: 20px;
             width: 250px;
             position: fixed;
@@ -27,13 +28,18 @@
         }
 
         .content-collapsable {
-            margin-top: 80px;
+            <<<<<<< HEAD=======border: 1px solid red;
+            >>>>>>>main margin-top: 80px;
             display: flex;
             flex-direction: column;
             padding:
         }
 
-        #logout {
+        <<<<<<< HEAD=======.content-collapsable #search {
+            border: 1px solid black;
+        }
+
+        >>>>>>>main #logout {
             border: 0;
         }
 
@@ -42,7 +48,7 @@
             margin: 0;
         }
 
-        .links-collapsable {
+        <<<<<<< HEAD .links-collapsable {
             display: flex;
             flex-direction: column;
         }
@@ -57,38 +63,49 @@
             display: flex;
             height: 40px;
             justify-content: space-between;
-            align-items: center;
-        }
 
-        .collapse-bars {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
+            =======.links-collapsable a {
+                color: white;
+                font-size: 20px;
+            }
 
-        .bar {
-            width: 20px;
-            height: 3px;
-            background-color: white;
-            margin-bottom: 5px;
-            transition: transform 0.3s ease;
-        }
+            .icons-collapsable {
+                border: 1px solid blue;
+                display: flex;
+                height: 30px;
+                justify-content: center;
+                >>>>>>>main align-items: center;
+            }
 
-        .bar:last-child {
-            margin-bottom: 0;
-        }
+            .collapse-bars {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
 
-        .open1 {
-            transform: rotate(45deg) translate(6px, 5px);
-        }
+            .bar {
+                width: 20px;
+                height: 3px;
+                background-color: white;
+                margin-bottom: 5px;
+                transition: transform 0.3s ease;
+            }
 
-        .open2 {
-            opacity: 0;
-        }
+            .bar:last-child {
+                margin-bottom: 0;
+            }
 
-        .open3 {
-            transform: rotate(-45deg) translate(6px, -5px);
-        }
+            .open1 {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .open2 {
+                opacity: 0;
+            }
+
+            .open3 {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
     </style>
 
 
@@ -293,33 +310,40 @@
 
             <div class="links-collapsable">
 
-                @if (Auth::check())
+                <<<<<<< HEAD @if (Auth::check())
                     <div id="profile">
                         <div class="profile_name">{{ Auth::user()->name }}</div>
                     </div>
-                @endif
+                    @endif
+                    =======
+                    @auth
+                        <div id="profile">
+                            <div class="profile_name">{{ Auth::user()->name }}</div>
+                        </div>
+                    @endauth
+                    >>>>>>> main
 
-                <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                    {{ __('Home') }}
-                </x-nav-link>
-
-                @if (Auth::check() && Auth::user()->hasRole('admin'))
-                    <x-nav-link :href="route('formations.index')" :active="request()->routeIs('formations.index')">
-                        {{ __('Formations') }}
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                        {{ __('Home') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('professors.index')" :active="request()->routeIs('professors.index')">
-                        {{ __('Professors') }}
-                    </x-nav-link>
+                    @if (Auth::check() && Auth::user()->hasRole('admin'))
+                        <x-nav-link :href="route('formations.index')" :active="request()->routeIs('formations.index')">
+                            {{ __('Formations') }}
+                        </x-nav-link>
 
-                    <x-nav-link :href="route('subjects.index')" :active="request()->routeIs('subjects.index')">
-                        {{ __('Subjects') }}
-                    </x-nav-link>
-                @endif
+                        <x-nav-link :href="route('professors.index')" :active="request()->routeIs('professors.index')">
+                            {{ __('Professors') }}
+                        </x-nav-link>
 
-                <x-nav-link :href="route('groups.index')" :active="request()->routeIs('groups.index')">
-                    {{ __('Groups') }}
-                </x-nav-link>
+                        <x-nav-link :href="route('subjects.index')" :active="request()->routeIs('subjects.index')">
+                            {{ __('Subjects') }}
+                        </x-nav-link>
+                    @endif
+
+                    <x-nav-link :href="route('groups.index')" :active="request()->routeIs('groups.index')">
+                        {{ __('Groups') }}
+                    </x-nav-link>
             </div>
 
         </div>
