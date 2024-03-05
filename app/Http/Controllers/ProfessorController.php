@@ -14,7 +14,9 @@ class ProfessorController extends Controller
     public function index()
     {
         if(Auth::check() && (Auth::user()->hasRole('registered_user') || Auth::user()->hasRole('admin'))){
-            $professors = Professor::paginate(10);
+            //$professors = Professor::paginate(10);
+
+            $professors = Professor::search(request('search'))->paginate(10);
 
             return view('professor.index', compact('professors'));
         }

@@ -16,6 +16,9 @@
     @endif
     <div class="max-w-2xl mx-auto pb-5">
         @if (count($groups) > 0)
+            <form method="get">
+                <input class="search-field" type="search" name="search" placeholder="Search...">
+            </form>
             <table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-md overflow-hidden">
                 <thead class="bg-gray-200">
                     <tr>
@@ -39,11 +42,7 @@
                             <td class="py-2 px-4 border-b">{{ $group->id }}</td>
                             <td class="py-2 px-4 border-b">{{ $group->school_year }}</td>
                             <td class="py-2 px-4 border-b">
-                                @foreach ($formations as $formation)
-                                    @if ($formation->id == $group->formation_id)
-                                        {{ $formation->acronym }}
-                                    @endif
-                                @endforeach
+                                {{$group->formation_acronym}}
                             </td>
                             <td class="py-2 px-4 border-b">{{ $group->year }}</td>
                             <td class="py-2 px-4 border-b">{{ $group->denomination }}</td>

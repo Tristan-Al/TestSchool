@@ -34,6 +34,7 @@
         </div>
         {{-- <div class="professor"><b>@yield('professor')'s</b> module</div> --}}
         {{-- <table> --}}
+
         @yield('table')
         {{-- </table> --}}
     </main>

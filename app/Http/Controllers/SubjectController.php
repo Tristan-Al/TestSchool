@@ -14,7 +14,11 @@ class SubjectController extends Controller
     public function index()
     {
         if(Auth::check() && (Auth::user()->hasRole('registered_user') || Auth::user()->hasRole('admin'))){
-            $subjects = Subject::paginate(10);
+            //$subjects = Subject::paginate(10);
+
+            $subjects = Subject::search(request('search'))->query(function ($query){
+                $query->join('formations', 'subjects.formation_id', '=', 'formations.id')->select('subjects.*', 'formations.acronym AS formation_acronym');
+            })->paginate(10);
 
             return view('subject.index', compact('subjects'));
         }

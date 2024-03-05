@@ -14,7 +14,18 @@ class LectureController extends Controller
     public function index()
     {
         if(Auth::check() && (Auth::user()->hasRole('registered_user') || Auth::user()->hasRole('admin'))){
-            $lectures = Lecture::paginate(10);
+            //$lectures = Lecture::paginate(10);
+
+            $lectures = Lecture::search(request('search'))->query(function ($query){
+                $query->join('groups', 'lectures.group_id', '=', 'groups.id')
+                    ->join('subjects', 'lectures.subject_id', '=', 'subjects.id')
+                    ->join('professors', 'lectures.professor_id', '=', 'professors.id')
+                    ->select(
+                        'lectures.*',
+                        'groups.denomination AS group_denomination',
+                        'subjects.acronym AS subject_acronym'
+                    );
+            })->paginate(10);
 
             return view('lecture.index', compact('lectures'));
         }

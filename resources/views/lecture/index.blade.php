@@ -16,6 +16,9 @@
     @endif
     <div class="max-w-2xl mx-auto pb-5">
         @if (count($lectures) > 0)
+            <form method="get">
+                <input class="search-field" type="search" name="search" placeholder="Search...">
+            </form>
             <table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-md overflow-hidden">
                 <thead class="bg-gray-200">
                     <tr>
@@ -39,18 +42,10 @@
                         <tr>
                             <td class="py-2 px-4 border-b">{{ $lecture->id }}</td>
                             <td class="py-2 px-4 border-b">
-                                @foreach ($groups as $group)
-                                    @if ($group->id == $lecture->group_id)
-                                        {{ $group->denomination }}
-                                    @endif
-                                @endforeach
+                                {{$lecture->group_denomination}}
                             </td>
                             <td class="py-2 px-4 border-b">
-                                @foreach ($subjects as $subject)
-                                    @if ($subject->id == $lecture->subject_id)
-                                        {{ $subject->acronym }}
-                                    @endif
-                                @endforeach
+                                {{$lecture->subject_acronym}}
                             </td>
                             <td class="py-2 px-4 border-b">
                                 @foreach ($professors as $professor)
