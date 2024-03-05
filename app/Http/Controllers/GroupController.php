@@ -13,7 +13,11 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $groups = Group::paginate(10);
+        //$groups = Group::paginate(10);
+
+        $groups = Group::search(request('search'))->query(function ($query){
+            $query->join('formations', 'groups.formation_id', '=', 'formations.id')->select('groups.*', 'formations.acronym AS formation_acronym');
+        })->paginate(10);
 
         return view('group.index', compact('groups'));
     }

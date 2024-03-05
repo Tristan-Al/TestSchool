@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Laravel\Scout\Searchable;
 
 class Group extends Model
 {
     use HasFactory;
+    use Searchable;
 
     protected $table = 'groups';
 
@@ -30,5 +32,16 @@ class Group extends Model
     public function formation(): BelongsTo
     {
         return $this->belongsTo(Formation::class);
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'school_year' => $this->school_year,
+            'formations.acronym' => '',
+            'year' => $this->year,
+            'denomination' => $this->denomination,
+            'shift' => $this->shift
+        ];
     }
 }

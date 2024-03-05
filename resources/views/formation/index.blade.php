@@ -16,6 +16,9 @@
     @endif
     <div class="max-w-2xl mx-auto pb-5">
         @if (count($formations) > 0)
+            <form method="get">
+                <input class="search-field" type="search" name="search" placeholder="Search...">
+            </form>
             <table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-md overflow-hidden">
                 <thead class="bg-gray-200">
                     <tr>
