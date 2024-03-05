@@ -494,6 +494,9 @@ th{
 
 .part-section1{
     flex:1;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
 }
 
 .part-section1 h1{

@@ -56,8 +56,8 @@
                 </div>
                 <div class="part-section1">
                     <h1>Who are we?</h1>
-                    <p class="firstp">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae, nam nemo ratione inventore minus eius earum laboriosam similique nihil asperiores?.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias nam impedit alias animi eaque, ipsa tenetur qui doloribus in modi blanditiis, totam natus.</p>
+                    <p class="firstp">At IES Zaidin Vergeles, we believe in fostering a vibrant and inclusive community where every student can thrive academically, socially, and personally.</p>
+                    <p>Our rigorous academic curriculum is designed to challenge and inspire students to reach their full potential.</p>
                 </div>
 
                 <div class="part-section1">
@@ -92,12 +92,12 @@
                             <p class="boldertext-section2">Our teachers</p>
                         </div>
                         <div class="item-section2-box">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, quasi.</p>
+                            <p>Our great variety of Extracurricular Activities</p>
                         </div>
                     </div>
                     <div class="row-section2 row-2-row">
                         <div class="item-section2-box">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, quasi.</p>
+                        <p>Our highly Supportive Environment</p>
                         </div>
                         <div class="item-section2-box white-space-section2">
                         <img src="{{ asset('img/software.png') }}" alt="books icon">
@@ -117,7 +117,7 @@
                         18008 Granada
                     </p>
                     <p>
-                        contact@ieszaidinvergeles.org<br>
+                        izv@ieszaidinvergeles.org<br>
                         987 65 43 21
                     </p>
                 </div>
@@ -142,7 +142,7 @@
             </div>
             <div class="columns">
                 <div class="column">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>We invite you to explore our website to learn more about IES Zaidin Vergeles and discover why it's the perfect place for your high school journey. Join us and become part of our vibrant and dynamic learning community!</p>
                     <a href="#">Back to Homepage</a>
                 </div>
                 <div class="column">
