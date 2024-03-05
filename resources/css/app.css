@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.logo-login {
+    width: 300px;
+    height: 70px;
+    margin: 0 auto;
+    display: block;
+}
