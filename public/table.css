@@ -444,6 +444,7 @@ th{
     font-family: 'Mogilte';
     font-size: 5rem;
     color: var(--white-2);
+    text-shadow: 0 0 1rem var(--blue-1);
 }
 #hero h1 .title{
     color: var(--blue-7);
@@ -909,9 +910,6 @@ iframe{
     #hero .subtitle{
         color: white;
         text-shadow: 0 0 5px var(--blue-1);
-    }
-    #hero h1{
-        text-shadow: 0 0 1rem var(--blue-1);
     }
     .section1-container{
         flex-flow: column nowrap;
