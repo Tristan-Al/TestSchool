@@ -16,9 +16,7 @@
 </head>
 
 <body>
-    <header>
-        @include('components.navigation')
-    </header>
+    @include('components.navigation')
     <div id="hero" class="columns">
         <div class="float_img">
             <img src="{{ asset('img/lines.png') }}" style="bottom: 0%; left: 0%;">
