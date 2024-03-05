@@ -22,7 +22,9 @@
             <table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-md overflow-hidden">
                 <thead class="bg-gray-200">
                     <tr>
-                        <th class="py-2 px-4 border-b">ID</th>
+                        @if (Auth::check() && Auth::user()->hasRole('admin'))
+                            <th class="py-2 px-4 border-b">ID</th>
+                        @endif
                         <th class="py-2 px-4 border-b">School Year</th>
                         <th class="py-2 px-4 border-b">Formation</th>
                         <th class="py-2 px-4 border-b">Year</th>
@@ -39,10 +41,12 @@
                     @endphp
                     @foreach ($groups as $group)
                         <tr>
-                            <td class="py-2 px-4 border-b">{{ $group->id }}</td>
+                            @if (Auth::check() && Auth::user()->hasRole('admin'))
+                                <td class="py-2 px-4 border-b">{{ $group->id }}</td>
+                            @endif
                             <td class="py-2 px-4 border-b">{{ $group->school_year }}</td>
                             <td class="py-2 px-4 border-b">
-                                {{$group->formation_acronym}}
+                                {{ $group->formation_acronym }}
                             </td>
                             <td class="py-2 px-4 border-b">{{ $group->year }}</td>
                             <td class="py-2 px-4 border-b">{{ $group->denomination }}</td>

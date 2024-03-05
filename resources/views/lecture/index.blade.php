@@ -22,7 +22,9 @@
             <table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-md overflow-hidden">
                 <thead class="bg-gray-200">
                     <tr>
-                        <th class="py-2 px-4 border-b">ID</th>
+                        @if (Auth::check() && Auth::user()->hasRole('admin'))
+                            <th class="py-2 px-4 border-b">ID</th>
+                        @endif
                         <th class="py-2 px-4 border-b">Group</th>
                         <th class="py-2 px-4 border-b">Subject</th>
                         <th class="py-2 px-4 border-b">Professor</th>
@@ -40,12 +42,14 @@
                     @endphp
                     @foreach ($lectures as $lecture)
                         <tr>
-                            <td class="py-2 px-4 border-b">{{ $lecture->id }}</td>
+                            @if (Auth::check() && Auth::user()->hasRole('admin'))
+                                <td class="py-2 px-4 border-b">{{ $lecture->id }}</td>
+                            @endif
                             <td class="py-2 px-4 border-b">
-                                {{$lecture->group_denomination}}
+                                {{ $lecture->group_denomination }}
                             </td>
                             <td class="py-2 px-4 border-b">
-                                {{$lecture->subject_acronym}}
+                                {{ $lecture->subject_acronym }}
                             </td>
                             <td class="py-2 px-4 border-b">
                                 @foreach ($professors as $professor)

@@ -22,7 +22,9 @@
             <table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-md overflow-hidden">
                 <thead class="bg-gray-200">
                     <tr>
-                        <th class="py-2 px-4 border-b">ID</th>
+                        @if (Auth::check() && Auth::user()->hasRole('admin'))
+                            <th class="py-2 px-4 border-b">ID</th>
+                        @endif
                         <th class="py-2 px-4 border-b">Denomination</th>
                         <th class="py-2 px-4 border-b">Acronym</th>
                         @if (Auth::check() && Auth::user()->hasRole('admin'))
@@ -33,7 +35,9 @@
                 <tbody>
                     @foreach ($formations as $formation)
                         <tr>
-                            <td class="py-2 px-4 border-b">{{ $formation->id }}</td>
+                            @if (Auth::check() && Auth::user()->hasRole('admin'))
+                                <td class="py-2 px-4 border-b">{{ $formation->id }}</td>
+                            @endif
                             <td class="py-2 px-4 border-b">{{ $formation->denomination }}</td>
                             <td class="py-2 px-4 border-b">{{ $formation->acronym }}</td>
                             @if (Auth::check() && Auth::user()->hasRole('admin'))

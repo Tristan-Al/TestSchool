@@ -22,7 +22,9 @@
             <table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-md overflow-hidden">
                 <thead class="bg-gray-200">
                     <tr>
-                        <th class="py-2 px-4 border-b">ID</th>
+                        @if (Auth::check() && Auth::user()->hasRole('admin'))
+                            <th class="py-2 px-4 border-b">ID</th>
+                        @endif
                         <th class="py-2 px-4 border-b">Seneca user</th>
                         <th class="py-2 px-4 border-b">Name</th>
                         <th class="py-2 px-4 border-b">Surname 1</th>
@@ -36,7 +38,9 @@
                 <tbody>
                     @foreach ($professors as $professor)
                         <tr>
-                            <td class="py-2 px-4 border-b">{{ $professor->id }}</td>
+                            @if (Auth::check() && Auth::user()->hasRole('admin'))
+                                <td class="py-2 px-4 border-b">{{ $professor->id }}</td>
+                            @endif
                             <td class="py-2 px-4 border-b">{{ $professor->seneca_user }}</td>
                             <td class="py-2 px-4 border-b">{{ $professor->name }}</td>
                             <td class="py-2 px-4 border-b">{{ $professor->surname1 }}</td>
@@ -63,7 +67,7 @@
                 </tbody>
             </table>
             <div class="mt-4">
-                {{ $professors->links()}}
+                {{ $professors->links() }}
             </div>
         @else
             <p> No professors available. </p>

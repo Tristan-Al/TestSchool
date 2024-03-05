@@ -22,7 +22,9 @@
             <table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-md overflow-hidden">
                 <thead class="bg-gray-200">
                     <tr>
-                        <th class="py-2 px-4 border-b">ID</th>
+                        @if (Auth::check() && Auth::user()->hasRole('admin'))
+                            <th class="py-2 px-4 border-b">ID</th>
+                        @endif
                         <th class="py-2 px-4 border-b">Formation</th>
                         <th class="py-2 px-4 border-b">Denomination</th>
                         <th class="py-2 px-4 border-b">Acronym</th>
@@ -40,9 +42,11 @@
                     @endphp
                     @foreach ($subjects as $subject)
                         <tr>
-                            <td class="py-2 px-4 border-b">{{ $subject->id }}</td>
+                            @if (Auth::check() && Auth::user()->hasRole('admin'))
+                                <td class="py-2 px-4 border-b">{{ $subject->id }}</td>
+                            @endif
                             <td class="py-2 px-4 border-b">
-                                {{$subject->formation_acronym}}
+                                {{ $subject->formation_acronym }}
                             </td>
                             <td class="py-2 px-4 border-b">{{ $subject->denomination }}</td>
                             <td class="py-2 px-4 border-b">{{ $subject->acronym }}</td>
