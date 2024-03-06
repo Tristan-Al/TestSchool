@@ -12,7 +12,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="{{ asset('table.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -42,8 +42,10 @@
             </div>
             <div class="part-section1">
                 <h1>Who are we?</h1>
-                <p class="firstp">At IES Zaidin Vergeles, we are dedicated to nurturing the potential of every student and providing them with a supportive and enriching learning environment. </p>
-                <p> With a focus on academic achievement, personal growth, and community involvement, we strive to empower our students to excel both inside and outside the classroom.</p>
+                <p class="firstp">At IES Zaidin Vergeles, we are dedicated to nurturing the potential of every student
+                    and providing them with a supportive and enriching learning environment. </p>
+                <p> With a focus on academic achievement, personal growth, and community involvement, we strive to
+                    empower our students to excel both inside and outside the classroom.</p>
             </div>
 
             <div class="part-section1">
@@ -59,9 +61,7 @@
 
         </div>
 
-
-        <!-- //NEW HTML
-        // SECTION 2 -->
+        <!-- SECTION 2 -->
 
         <div class="section2-container">
             <div class="part-section2">
@@ -84,7 +84,7 @@
                     </div>
                     <div class="row-section2 row-2-row">
                         <div class="item-section2-box">
-                        <p>Our Carrer Focused Learning Methods</p>
+                            <p>Our Carrer Focused Learning Methods</p>
                         </div>
                         <div class="item-section2-box white-space-section2">
                             <img src="{{ asset('img/software.png') }}" alt="books icon">
@@ -120,45 +120,49 @@
                 </ul>
             </nav>
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20383.65623700559!2d-3.591667663929073!3d37.16534565896571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fca6107464e5%3A0x5cc395f96e47c0d9!2sIES%20Zaid%C3%ADn%20Vergeles!5e0!3m2!1ses!2ses!4v1709634441961!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            
-        </main>
-        <footer>
-            <div class="logo">
-                <img src="{{ asset('img/logo_withtext.png') }}">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20383.65623700559!2d-3.591667663929073!3d37.16534565896571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fca6107464e5%3A0x5cc395f96e47c0d9!2sIES%20Zaid%C3%ADn%20Vergeles!5e0!3m2!1ses!2ses!4v1709634441961!5m2!1ses!2ses"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    </main>
+    <footer>
+        <div class="logo">
+            <img src="{{ asset('img/logo_withtext.png') }}">
+        </div>
+        <div class="columns">
+            <div class="column">
+                <p>At IES Zaidin Vergeles, we are dedicated to nurturing the potential of every student and providing
+                    them with a supportive and enriching learning environment. </p>
+                <a href="#">Back to Homepage</a>
             </div>
-            <div class="columns">
-                <div class="column">
-                    <p>At IES Zaidin Vergeles, we are dedicated to nurturing the potential of every student and providing them with a supportive and enriching learning environment. </p>
-                    <a href="#">Back to Homepage</a>
-                </div>
-                <div class="column">
-                    <h3>Location</h3>
-                    <p>C/Primavera 26, Genil</p>
-                    <p>18008 Granada</p>
-                </div>
-                <div class="column">
-                    <h3>Social Media</h3>
-                    <p>
-                        <a><img src="{{ asset('assets/twitter.png') }}"></a>
-                        <a><img src="{{ asset('assets/linkedin.png') }}"></a>
-                        <a><img src="{{ asset('assets/instagram.png') }}"></a>
-                        <a><img src="{{ asset('assets/facebook.png') }}"></a>
-                    </p>
-                </div>
-                <div class="column">
-                    <h3>Contact</h3>
-                    <p>izv@ieszaidinvergeles.org</p>
-                    <p>987 65 43 21</p>
-                </div>
-                <div class="column">
-                    <h3>Links</h3>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Cookie Policy</a>
-                    <a href="#">Legal Warning</a>
-                    <a href="#">Logout</a>
-                </div>
+            <div class="column">
+                <h3>Location</h3>
+                <p>C/Primavera 26, Genil</p>
+                <p>18008 Granada</p>
             </div>
-        </footer>
-    </body>
+            <div class="column">
+                <h3>Social Media</h3>
+                <p>
+                    <a><img src="{{ asset('assets/twitter.png') }}"></a>
+                    <a><img src="{{ asset('assets/linkedin.png') }}"></a>
+                    <a><img src="{{ asset('assets/instagram.png') }}"></a>
+                    <a><img src="{{ asset('assets/facebook.png') }}"></a>
+                </p>
+            </div>
+            <div class="column">
+                <h3>Contact</h3>
+                <p>izv@ieszaidinvergeles.org</p>
+                <p>987 65 43 21</p>
+            </div>
+            <div class="column">
+                <h3>Links</h3>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Legal Warning</a>
+                <a href="#">Logout</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
 </html>

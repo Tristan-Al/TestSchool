@@ -13,9 +13,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //$groups = Group::paginate(10);
-
-        $groups = Group::search(request('search'))->query(function ($query){
+        $groups = Group::search(request('search'))->query(function ($query) {
             $query->join('formations', 'groups.formation_id', '=', 'formations.id')->select('groups.*', 'formations.acronym AS formation_acronym');
         })->paginate(10);
 
@@ -27,10 +25,9 @@ class GroupController extends Controller
      */
     public function create()
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             return view('group.create');
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -40,12 +37,11 @@ class GroupController extends Controller
      */
     public function store(GroupRequest $request)
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             Group::create($request->validated());
 
             return redirect()->route('groups.index')->with('success', 'Group created successfully');
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -56,10 +52,9 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             return view('group.edit', compact('group'));
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -69,12 +64,11 @@ class GroupController extends Controller
      */
     public function update(GroupRequest $request, Group $group)
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             $group->update($request->validated());
 
             return redirect()->route('groups.edit', $group)->with('success', 'Group updated successfully');
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -84,12 +78,11 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             $group->delete();
 
             return redirect()->route('groups.index')->with('success', 'Group deleted successfully');
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }

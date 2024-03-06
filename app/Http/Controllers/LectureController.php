@@ -13,10 +13,8 @@ class LectureController extends Controller
      */
     public function index()
     {
-        if(Auth::check() && (Auth::user()->hasRole('registered_user') || Auth::user()->hasRole('admin'))){
-            //$lectures = Lecture::paginate(10);
-
-            $lectures = Lecture::search(request('search'))->query(function ($query){
+        if (Auth::check() && (Auth::user()->hasRole('registered_user') || Auth::user()->hasRole('admin'))) {
+            $lectures = Lecture::search(request('search'))->query(function ($query) {
                 $query->join('groups', 'lectures.group_id', '=', 'groups.id')
                     ->join('subjects', 'lectures.subject_id', '=', 'subjects.id')
                     ->join('professors', 'lectures.professor_id', '=', 'professors.id')
@@ -28,8 +26,7 @@ class LectureController extends Controller
             })->paginate(10);
 
             return view('lecture.index', compact('lectures'));
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -39,10 +36,9 @@ class LectureController extends Controller
      */
     public function create()
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             return view('lecture.create');
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -52,12 +48,11 @@ class LectureController extends Controller
      */
     public function store(LectureRequest $request)
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             Lecture::create($request->validated());
 
             return redirect()->route('lectures.index')->with('success', 'Lecture created successfully');
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -68,10 +63,9 @@ class LectureController extends Controller
      */
     public function edit(Lecture $lecture)
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             return view('lecture.edit', compact('lecture'));
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -81,12 +75,11 @@ class LectureController extends Controller
      */
     public function update(LectureRequest $request, Lecture $lecture)
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             $lecture->update($request->validated());
 
             return redirect()->route('lectures.edit', $lecture)->with('success', 'Lecture updated successfully');
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -96,12 +89,11 @@ class LectureController extends Controller
      */
     public function destroy(Lecture $lecture)
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             $lecture->delete();
 
             return redirect()->route('lectures.index')->with('success', 'Lecture deleted successfully');
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }

@@ -8,8 +8,7 @@
     @if (Auth::check() && Auth::user()->hasRole('admin'))
         <div class="py-2 px-4 border-b inline">
             <a href="{{ route('formations.create') }}"
-                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                onclick="return confirm('Are you sure you want to add a new formation?')">
+                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 New Formation
             </a>
         </div>
@@ -17,7 +16,8 @@
     <div class="max-w-2xl mx-auto pb-5">
         @if (count($formations) > 0)
             <form method="get">
-                <input class="search-field" type="search" name="search" placeholder="Search...">
+                <input class="search-field mt-1 p-2 w-full border rounded-md" type="search" name="search"
+                    placeholder="Search...">
             </form>
             <table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-md overflow-hidden">
                 <thead class="bg-gray-200">

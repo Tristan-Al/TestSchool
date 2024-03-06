@@ -274,7 +274,18 @@ nav a,
     height: 1.2rem;
     padding-right: 1rem;
     border-right: 1px solid white;
-    margin-right: 1rem;
+    margin-right: 1.2rem;
+}
+
+#logout a {
+    transition: all 300ms ease;
+}
+
+#logout a:hover {
+    background-color: transparent !important;
+    transform: scale(1.1);
+
+    transition: all 300ms ease;
 }
 
 #search img,
@@ -288,6 +299,8 @@ nav a,
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: center;
+    margin: 0 auto;
+    height: 40px;
 
     cursor: pointer;
 }
@@ -306,6 +319,8 @@ nav a,
 
 .profile_name {
     font-size: 1.2rem;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 
@@ -329,6 +344,7 @@ footer .logo {
 
 .columns {
     width: 100%;
+
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -341,11 +357,27 @@ footer .columns {
 
 .column {
     flex: 1 1 0;
-
+    flex: 0 1 20%;
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: flex-start;
+}
+
+.column-rrss {
+    flex: 0 1 20%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+}
+
+.icons-rrss {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
 }
 
 footer h3 {
@@ -439,6 +471,7 @@ main {
 
 table {
     width: 100%;
+    margin-top: 50px;
     color: white;
     border-radius: 1rem;
     overflow: hidden;
@@ -493,7 +526,7 @@ th {
     width: 40%;
     aspect-ratio: 1/1;
 
-    background-image: url(img/logo_withouttext.png);
+    background-image: url(img/logo_wituttext.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -507,6 +540,7 @@ th {
 
 .formation {
     flex: 1 0 30%;
+    flex: 0 1 30%;
     padding: 1rem;
     padding-bottom: 7rem;
     margin-bottom: 7rem;
@@ -649,8 +683,28 @@ th {
     position: relative;
 }
 
-.part-section1{
-    flex:1;
+.part-section1 {
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+.part-section1 h1 {
+    font-size: clamp(3rem, 2.5rem + 2vw, 4rem);
+    color: #1b4242;
+    margin-bottom: 40px;
+}
+
+.part-section1 p {
+    font-size: clamp(1.2rem, 1.15rem + 0.2vw, 1.3rem);
+}
+
+.firstp {
+    margin-bottom: 20px;
+}
+
+.part-section1:first-child {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -773,6 +827,21 @@ th {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    padding-top: 0px;
+}
+
+.white-space-section2:first-child {
+    margin-right: 40px;
+}
+
+.item-section2-box img {
+    margin: 10px;
+    margin-top: 0px;
+}
+
+.boldertext-section2 {
+    margin-bottom: 20px;
 }
 
 .white-space-section2:first-child {
@@ -863,7 +932,7 @@ th {
 .circle-section3 p {
     display: block;
     width: 50%;
-    margin-left: 50%;
+    margin-left: 15%;
 }
 
 iframe {
@@ -937,7 +1006,6 @@ iframe {
 @media screen and (max-width: 1000px) {
     header {
         flex-flow: column nowrap;
-        height: 150px;
         padding-bottom: 1rem;
         gap: 1rem;
         transition: all 300ms ease;
@@ -1028,7 +1096,6 @@ iframe {
             flex-flow: column nowrap;
             padding-bottom: 1.5rem;
             gap: 1rem;
-            height: 150px;
             transition: all 300ms ease;
             align-items: end;
         }
@@ -1113,28 +1180,37 @@ iframe {
             align-items: flex-start;
         }
 
-    #hero .subtitle{
-        color: white;
-        text-shadow: 0 0 5px var(--blue-1);
-    }
-    .section1-container{
-        flex-flow: column nowrap;
-    }
-    .section2-container{
-        height: auto;
-        flex-flow: column nowrap;
-    }
-    .row-section2 {
-        flex-flow: column nowrap;
-        align-items: center;
-        gap: 2rem;
-    }
-    .row-section2 p{
-        text-align: center !important;
-    }
-    .white-space-section2{
-        margin: 0 !important;
-    }
+        #hero .subtitle {
+            color: white;
+            text-shadow: 0 0 5px var(--blue-1);
+        }
+
+        #hero h1 {
+            text-shadow: 0 0 1rem var(--blue-1);
+        }
+
+        .section1-container {
+            flex-flow: column nowrap;
+        }
+
+        .section2-container {
+            height: auto;
+            flex-flow: column nowrap;
+        }
+
+        .row-section2 {
+            flex-flow: column nowrap;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .row-section2 p {
+            text-align: center !important;
+        }
+
+        .white-space-section2 {
+            margin: 0 !important;
+        }
 
         .section3-container {
             flex-flow: column-reverse nowrap;
@@ -1147,6 +1223,47 @@ iframe {
 
         .section3-container img {
             transform: translateY(50%);
+        }
+
+        .section3-container {
+            flex-flow: column-reverse nowrap;
+            height: 150vh;
+        }
+
+        .circle-section3 {
+            transform: translateY(50%) translateX(-30%);
+        }
+
+        .section3-container img {
+            transform: translateY(50%);
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        footer {
+            display: flex;
+            flex-flow: column nowrap;
+        }
+
+        .column:first-child {
+            display: none;
+        }
+
+        .columns {
+            display: flex !important;
+            flex-flow: column nowrap !important;
+        }
+
+        .circle-section3 h2 {
+            margin-bottom: 0;
+        }
+
+        .circle-section3 p {
+            margin-left: 15%;
+        }
+
+        .title-section2 h1 {
+            margin-bottom: 20px;
         }
     }
 }

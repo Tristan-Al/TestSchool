@@ -13,14 +13,11 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        if(Auth::check() && (Auth::user()->hasRole('registered_user') || Auth::user()->hasRole('admin'))){
-            //$professors = Professor::paginate(10);
-
+        if (Auth::check() && (Auth::user()->hasRole('registered_user') || Auth::user()->hasRole('admin'))) {
             $professors = Professor::search(request('search'))->paginate(10);
 
             return view('professor.index', compact('professors'));
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -30,10 +27,9 @@ class ProfessorController extends Controller
      */
     public function create()
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             return view('professor.create');
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -43,12 +39,11 @@ class ProfessorController extends Controller
      */
     public function store(ProfessorRequest $request)
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             Professor::create($request->validated());
 
             return redirect()->route('professors.index')->with('success', 'Professor created successfully');
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -59,10 +54,9 @@ class ProfessorController extends Controller
      */
     public function edit(Professor $professor)
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             return view('professor.edit', compact('professor'));
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -72,12 +66,11 @@ class ProfessorController extends Controller
      */
     public function update(ProfessorRequest $request, Professor $professor)
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             $professor->update($request->validated());
 
             return redirect()->route('professors.edit', $professor)->with('success', 'Professor updated successfully');
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -87,12 +80,11 @@ class ProfessorController extends Controller
      */
     public function destroy(Professor $professor)
     {
-        if(Auth::check() && Auth::user()->hasRole('admin')){
+        if (Auth::check() && Auth::user()->hasRole('admin')) {
             $professor->delete();
 
             return redirect()->route('professors.index')->with('success', 'Professor deleted successfully');
-        }
-        else{
+        } else {
             return redirect()->route('login');
         }
     }

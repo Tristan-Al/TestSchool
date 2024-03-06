@@ -13,14 +13,11 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| All the users should be able to see the dashboard without being logged in.
+| Once inside, the non registered users would see the option 'Log in/Register', and the rest the option 'Profile'.
 |
 */
 
-// All the users should be able to see the dashboard without being logged in.
-// Once inside, the non registered users would see the option 'Log in/Register', and the rest the option 'Profile'.
 Route::view('/', 'dashboard')->name('home');
 
 Route::resource('groups', GroupController::class)->except(['show']);

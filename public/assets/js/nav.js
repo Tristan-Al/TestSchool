@@ -1,21 +1,16 @@
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("Script executed");
-
+document.addEventListener("DOMContentLoaded", function () {
     let prevScrollPos = window.scrollY || document.documentElement.scrollTop;
     const navElement = document.querySelector("header");
-    console.log(navElement);
 
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const currentScrollPos = window.scrollY || document.documentElement.scrollTop;
 
         if (prevScrollPos > currentScrollPos) {
-            //scroll hacia arriba
+            // Scroll up
             navElement.style.top = "0";
-            console.log("Scrolling up");
         } else {
-            //scroll hacia abajo
+            // Scroll down
             navElement.style.top = "-115px";
-            console.log("Scrolling down");
         }
 
         prevScrollPos = currentScrollPos;
